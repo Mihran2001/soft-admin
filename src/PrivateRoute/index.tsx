@@ -1,19 +1,16 @@
 import React from "react";
-import { Navigate, RouterProps } from "react-router";
-import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 type Props = {
   redirect?: string;
 };
 
-const PrivateRoute: React.FC<Props> = ({
-  children,
-  redirect = "auth/login",
-}) => {
-  const state = useSelector((state: any) => state.authReducer);
-  console.log(state.isAuthenticated);
+const PrivateRoute: React.FC<Props> = ({ children, redirect = "/auth" }) => {
+  const { isAuth } = useTypedSelector((state) => state.auth);
+  console.log(isAuth);
 
-  return state.isAuthenticated ? <>{children}</> : <Navigate to={redirect} />;
+  return isAuth ? <>{children}</> : <Navigate to={redirect} />;
 };
 
 export default PrivateRoute;
