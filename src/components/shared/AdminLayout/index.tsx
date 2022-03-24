@@ -30,7 +30,7 @@ const AdminLayout: FC = () => {
           <Menu.Item
             key="1"
             icon={<UserOutlined />}
-            onClick={() => navigate("/1")}
+            // onClick={() => navigate("/1")}
           >
             Posts
           </Menu.Item>

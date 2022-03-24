@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Layout } from "antd";
 
 export const SLayout = styled(Layout)`
+  height: 100vh;
   #components-layout-demo-responsive .logo {
     height: 32px;
     margin: 16px;
