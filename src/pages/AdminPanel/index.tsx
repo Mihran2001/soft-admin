@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Card, Layout, Row } from "antd";
+import AdminLayout from "../../components/shared/AdminLayout";
 
 const AdminPanel: FC = () => {
-  return <h1>ds</h1>;
+  return <AdminLayout></AdminLayout>;
 };
 
 export default AdminPanel;

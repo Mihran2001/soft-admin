@@ -9,11 +9,11 @@ const AppRouter: React.FC<{}> = () => {
   return (
     <Routes>
       <Route
-        path="/admin"
+        path="/"
         element={
-          <PrivateRoute>
-            <AdminPanel />
-          </PrivateRoute>
+          // <PrivateRoute>
+          <AdminPanel />
+          // </PrivateRoute>
         }
       />
       <Route

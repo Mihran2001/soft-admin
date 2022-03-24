@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Card, Layout, Row } from "antd";
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/shared/LoginForm";
 
 const Login: FC = () => {
   return (
