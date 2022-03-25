@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Children, FC } from "react";
 import { Layout, Menu } from "antd";
 import {
   UploadOutlined,
@@ -6,13 +6,11 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { SLayout } from "./styles";
-import Table from "../../Base/Table";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminLayout: FC = () => {
-  const navigate = useNavigate();
+const AdminLayout: FC = ({ children }) => {
   return (
     <SLayout>
       <Sider
@@ -27,18 +25,14 @@ const AdminLayout: FC = () => {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-          <Menu.Item
-            key="1"
-            icon={<UserOutlined />}
-            // onClick={() => navigate("/1")}
-          >
-            Posts
+          <Menu.Item key="1" icon={<UserOutlined />}>
+            <Link to={"/posts"}> Posts</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            Jobs
+            <Link to={"/articles"}> Articles</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<UploadOutlined />}>
-            News
+            <Link to={"/news"}> News</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -47,14 +41,7 @@ const AdminLayout: FC = () => {
           className="site-layout-sub-header-background"
           style={{ padding: 0 }}
         />
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            <Table />
-          </div>
-        </Content>
+        <Content style={{ margin: "24px 16px 0" }}>{children}</Content>
         <Footer style={{ textAlign: "center" }}>Softconstruct</Footer>
       </Layout>
     </SLayout>
