@@ -8,7 +8,6 @@ export const PostEditWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   padding: 50px 100px;
 `;
 
