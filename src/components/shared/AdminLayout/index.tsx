@@ -25,13 +25,13 @@ const AdminLayout: FC = ({ children }) => {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
+          <Menu.Item key="1">
             <Link to={"/posts"}> Posts</Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="2">
             <Link to={"/articles"}> Articles</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
+          <Menu.Item key="3">
             <Link to={"/news"}> News</Link>
           </Menu.Item>
         </Menu>

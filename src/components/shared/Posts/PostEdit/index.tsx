@@ -7,25 +7,25 @@ import {
   InputesBox,
 } from "./styles";
 import UploadImg from "../../../UploadImg";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Editor, EditorState } from "draft-js";
+import TextEditor from "../../../TextEditor";
 
 const PostEdit: FC = () => {
   return (
     <PostEditWrapper>
-      <Editor
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        // editorStyle={<h1>dsa</h1>}
-      />
+      <TextEditor />
       <InputesBox>
         <SLabel>Title</SLabel>
 
         <SInput placeholder="Title" />
-        <SLabel>Content</SLabel>
 
-        <STextArea placeholder="Content" />
+        <SLabel>URL</SLabel>
+        <SInput placeholder="URL" />
+
+        {/* 
+        <SLabel>Content</SLabel>
+        <STextArea placeholder="Content" /> */}
+
         <UploadImg />
       </InputesBox>
     </PostEditWrapper>
