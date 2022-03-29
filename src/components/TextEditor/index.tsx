@@ -45,19 +45,25 @@ function TextEditor() {
     return "not-handled";
   };
 
-  const onUnderlineClick = () => {
+  const onUnderlineClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     onChange(RichUtils.toggleInlineStyle(editorState, "UNDERLINE"));
   };
 
-  const onBoldClick = () => {
+  const onBoldClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
   };
 
-  const onItalicClick = () => {
+  const onItalicClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     onChange(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
   };
 
-  const onStrikeThroughClick = () => {
+  const onStrikeThroughClick: React.MouseEventHandler<HTMLButtonElement> = (
+    e
+  ) => {
+    e.preventDefault();
     onChange(RichUtils.toggleInlineStyle(editorState, "STRIKETHROUGH"));
   };
 
@@ -66,7 +72,7 @@ function TextEditor() {
       <button
         className="inline styleButton editorButtons"
         id="underline"
-        onClick={onUnderlineClick}
+        onMouseDown={onUnderlineClick}
       >
         U
       </button>
@@ -74,7 +80,7 @@ function TextEditor() {
       <button
         className="inline styleButton editor-buttons"
         id="bold"
-        onClick={onBoldClick}
+        onMouseDown={onBoldClick}
       >
         B
       </button>
@@ -82,13 +88,13 @@ function TextEditor() {
       <button
         className="inline styleButton editor-buttons"
         id="italic"
-        onClick={onItalicClick}
+        onMouseDown={onItalicClick}
       >
         I
       </button>
       <button
         className="inline styleButton strikethrough editor-buttons"
-        onClick={onStrikeThroughClick}
+        onMouseDown={onStrikeThroughClick}
       >
         abc
       </button>
