@@ -34,7 +34,13 @@ export const AuthActionCreators = {
       try {
         dispatch(AuthActionCreators.setIsLoading(true));
         setTimeout(async () => {
-          const response = await UserService.getUsers();
+          // const response = await UserService.getUsers();
+          const response = await axios.post(
+            "http://localhost:9001/auth/login",
+            { email: username, password }
+          );
+          console.log(response);
+
           const mockUser = response.data.find(
             (user: any) =>
               user.username === username && user.password === password

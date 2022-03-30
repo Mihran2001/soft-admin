@@ -1,7 +1,7 @@
 import { Table, Tag, Space } from "antd";
 import { Link } from "react-router-dom";
 
-const columns = [
+const columns = () => [
   {
     title: "Name",
     dataIndex: "name",
@@ -43,7 +43,6 @@ const columns = [
     key: "action",
     render: (text: string, record: any) => (
       <Space size="middle">
-        {/* <a>Edit </a> */}
         <Link to="/posts/edit">Edit</Link>
         <a>Delete</a>
       </Space>
@@ -76,5 +75,5 @@ const data = [
 ];
 
 export default function () {
-  return <Table columns={columns} dataSource={data} />;
+  return <Table columns={columns()} dataSource={data} />;
 }

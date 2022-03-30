@@ -24,7 +24,11 @@ const LoginForm: FC = () => {
         name="username"
         rules={[rules.required("Please enter username!")]}
       >
-        <Input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <Input
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{ width: "175px" }}
+        />
       </Form.Item>
       <Form.Item
         label="password"
@@ -35,6 +39,7 @@ const LoginForm: FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type={"password"}
+          style={{ marginLeft: "7px", width: "175px" }}
         />
       </Form.Item>
       <Form.Item>

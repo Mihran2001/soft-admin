@@ -7,7 +7,7 @@ import AdminPanel from "../../pages/AdminPanel";
 import Posts from "../shared/Posts";
 import News from "../shared/News";
 import Articles from "../shared/Articles";
-import PostEdit from "../shared/Posts/PostEdit";
+import EditOrCreate from "../shared/EditOrCreate";
 
 const AppRouter: React.FC<{}> = () => {
   return (
@@ -21,9 +21,12 @@ const AppRouter: React.FC<{}> = () => {
         }
       >
         <Route path="posts" element={<Posts />} />
-        <Route path="articles" element={<Articles />} />
+        <Route path="posts/edit" element={<EditOrCreate />} />
+        <Route path="posts/add" element={<EditOrCreate />} />
         <Route path="news" element={<News />} />
-        <Route path="posts/edit" element={<PostEdit />} />
+        <Route path="news/edit" element={<EditOrCreate />} />
+        <Route path="news/add" element={<EditOrCreate />} />
+        <Route path="articles" element={<Articles />} />
       </Route>
       <Route
         path="/auth"
