@@ -19,9 +19,11 @@ export const AuthActionCreators = {
     type: AuthActionEnum.SET_USER,
     payload: user,
   }),
-  removeUser: (): RemoveUserAction => ({
+  removeUser: (isAuth: boolean): RemoveUserAction => ({
     type: AuthActionEnum.REMOVE_USER,
+    payload: isAuth,
   }),
+
   setIsAuth: (auth: boolean): SetAuthAction => ({
     type: AuthActionEnum.SET_AUTH,
     payload: auth,
@@ -56,9 +58,6 @@ export const AuthActionCreators = {
     },
   logout: () => (dispatch: AppDispatch) => {
     removeSession();
-    // dispatch(AuthActionCreators.setUser({} as IUser));
-    // dispatch(AuthActionCreators.setIsAuth(false));
-
-    // dispatch(AuthActionCreators.removeUser);
+    dispatch(AuthActionCreators.removeUser(false));
   },
 };

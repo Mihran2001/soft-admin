@@ -34,7 +34,7 @@ export interface SetIsLoadingAction {
 
 export interface RemoveUserAction {
   type: AuthActionEnum.REMOVE_USER;
-  payload?: any;
+  payload: boolean;
 }
 
 export type AuthAction =
