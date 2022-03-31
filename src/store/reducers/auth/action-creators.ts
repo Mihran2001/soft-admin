@@ -4,16 +4,23 @@ import {
   SetErrorAction,
   SetIsLoadingAction,
   SetUserAction,
+  RemoveUserAction,
 } from "./types";
 import { IUser } from "../../../models/IUser";
 import { AppDispatch } from "../../index";
 import axios from "axios";
-import UserService from "../../../api/UserService";
+// import UserService from "../../../api/UserService";
+import { instance } from "../../../api/UserService";
+import { setSession } from "../../../helpers/setSession";
+import { removeSession } from "../../../helpers/removeSession";
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({
     type: AuthActionEnum.SET_USER,
     payload: user,
+  }),
+  removeUser: (): RemoveUserAction => ({
+    type: AuthActionEnum.REMOVE_USER,
   }),
   setIsAuth: (auth: boolean): SetAuthAction => ({
     type: AuthActionEnum.SET_AUTH,
@@ -30,43 +37,28 @@ export const AuthActionCreators = {
   login:
     (username: string, password: string) => async (dispatch: AppDispatch) => {
       console.log(dispatch);
-
+      dispatch(AuthActionCreators.setIsLoading(true));
       try {
-        dispatch(AuthActionCreators.setIsLoading(true));
-        setTimeout(async () => {
-          // const response = await UserService.getUsers();
-          const response = await axios.post(
-            "http://localhost:9001/auth/login",
-            { email: username, password }
-          );
-          console.log(response);
-
-          const mockUser = response.data.find(
-            (user: any) =>
-              user.username === username && user.password === password
-          );
-          if (mockUser) {
-            localStorage.setItem("auth", "true");
-            localStorage.setItem("username", mockUser.username);
-            dispatch(AuthActionCreators.setUser(mockUser));
-            dispatch(AuthActionCreators.setIsAuth(true));
-          } else {
-            dispatch(
-              AuthActionCreators.setError("Incorrect login or password")
-            );
-          }
-          dispatch(AuthActionCreators.setIsLoading(false));
-        }, 1000);
+        const response = await instance.post("/auth/login", {
+          email: username,
+          password,
+        });
+        console.log(response);
+        dispatch(AuthActionCreators.setIsAuth(true));
+        setSession(response.data.token);
       } catch (e) {
         dispatch(
           AuthActionCreators.setError("An error occurred while logging in")
         );
+      } finally {
+        dispatch(AuthActionCreators.setIsLoading(false));
       }
     },
-  logout: () => async (dispatch: AppDispatch) => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("username");
-    dispatch(AuthActionCreators.setUser({} as IUser));
-    dispatch(AuthActionCreators.setIsAuth(false));
+  logout: () => (dispatch: AppDispatch) => {
+    removeSession();
+    // dispatch(AuthActionCreators.setUser({} as IUser));
+    // dispatch(AuthActionCreators.setIsAuth(false));
+
+    // dispatch(AuthActionCreators.removeUser);
   },
 };

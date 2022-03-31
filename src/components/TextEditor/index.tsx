@@ -8,6 +8,7 @@ function TextEditor() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+  console.log("editorState", editorState);
 
   //   const plugins = [addLinkPlugin];
 

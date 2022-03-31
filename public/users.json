@@ -4,3 +4,10 @@
     "password": "123"
   }
 ]
+
+// {
+//   "email": "xachatryan200104@gmail.com",
+//   "id": "62445259d25c4a07483ecfe8",
+//   "role": "user",
+//   "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQ0NTI1OWQyNWM0YTA3NDgzZWNmZTgiLCJlbWFpbCI6InhhY2hhdHJ5YW4yMDAxMDRAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDg2NTI4NjUsImV4cCI6MjUxMjY1Mjg2NX0.Geb2TjqKA7FMft_mAswP2rZAZATYvS1LO4S0eGNpYCA"
+// }
