@@ -38,20 +38,20 @@ export const AuthActionCreators = {
   }),
   login:
     (username: string, password: string) => async (dispatch: AppDispatch) => {
-      console.log(dispatch);
       dispatch(AuthActionCreators.setIsLoading(true));
       try {
-        const response = await instance.post("/auth/login", {
+        const { data } = await instance.post("/auth/login", {
           email: username,
           password,
         });
-        console.log(response);
         dispatch(AuthActionCreators.setIsAuth(true));
-        setSession(response.data.token);
+        setSession(data.token);
+        return data;
       } catch (e) {
         dispatch(
           AuthActionCreators.setError("An error occurred while logging in")
         );
+        throw e;
       } finally {
         dispatch(AuthActionCreators.setIsLoading(false));
       }

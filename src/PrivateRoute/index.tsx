@@ -8,7 +8,7 @@ type Props = {
 
 const PrivateRoute: React.FC<Props> = ({ children, redirect = "/auth" }) => {
   const { isAuth } = useTypedSelector((state) => state.auth);
-  console.log(isAuth);
+  // console.log(isAuth);
 
   return isAuth ? <>{children}</> : <Navigate to={redirect} />;
 };

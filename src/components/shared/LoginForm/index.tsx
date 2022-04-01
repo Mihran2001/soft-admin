@@ -1,19 +1,26 @@
 import React, { FC, useState } from "react";
 import { Button, Form, Input } from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
 import { rules } from "../../../utils/rules";
 import { useDispatch } from "react-redux";
 import { AuthActionCreators } from "../../../store/reducers/auth/action-creators";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useActions } from "../../../hooks/useActions";
+import { useActions, useAsyncActions } from "../../../hooks/useActions";
 
 const LoginForm: FC = () => {
+  const location: any = useLocation();
+  const navigate = useNavigate();
   const { error, isLoading } = useTypedSelector((state) => state.auth);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useActions();
+  const { login } = useAsyncActions();
+
+  const from = location.state?.from?.pathname || "/";
 
   const submit = () => {
-    login(username, password);
+    login(username, password).then(() => {
+      navigate(from, { replace: true });
+    });
   };
 
   return (
