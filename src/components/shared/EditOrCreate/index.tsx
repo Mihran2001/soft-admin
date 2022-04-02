@@ -7,10 +7,14 @@ import {
   InputesBox,
 } from "./styles";
 import UploadImg from "../../UploadImg";
-import { Editor, EditorState } from "draft-js";
 import TextEditor from "../../TextEditor";
+// import MyInput from "../../TestComponent";
 
-const EditOrCreate: FC = () => {
+interface IEditOrCreate {
+  data?: {};
+}
+
+const EditOrCreate: FC<IEditOrCreate> = ({ data }) => {
   return (
     <PostEditWrapper>
       <TextEditor />
@@ -25,6 +29,7 @@ const EditOrCreate: FC = () => {
         <STextArea placeholder="Content" /> */}
 
         <UploadImg />
+        {/* <MyInput /> */}
       </InputesBox>
     </PostEditWrapper>
   );

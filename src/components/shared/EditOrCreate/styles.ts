@@ -12,12 +12,10 @@ export const PostEditWrapper = styled.div`
 `;
 
 export const SInput = styled(Input)`
-  /* width: 50%; */
   margin-bottom: 30px;
 `;
 
 export const STextArea = styled(TextArea)`
-  /* width: 50%; */
   margin-bottom: 50px;
 `;
 

@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  ContentState,
+  convertToRaw,
+} from "draft-js";
 import "draft-js/dist/Draft.css";
 
 function TextEditor() {
@@ -9,7 +15,7 @@ function TextEditor() {
   );
 
   const onChange = (editorState: any) => {
-    setEditorState(() => editorState);
+    setEditorState(editorState);
   };
 
   const handleKeyCommand = (command: any) => {
@@ -43,7 +49,12 @@ function TextEditor() {
     onChange(RichUtils.toggleInlineStyle(editorState, "STRIKETHROUGH"));
   };
 
-  console.log("editorState", editorState);
+  const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
+  const value = blocks
+    .map((block) => (!block.text.trim() && "\n") || block.text)
+    .join("\n");
+
+  console.log("editorState", value);
 
   return (
     <div className="editorContainer">

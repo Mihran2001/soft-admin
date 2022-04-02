@@ -15,9 +15,9 @@ const AppRouter: React.FC<{}> = () => {
       <Route
         path="/"
         element={
-          <PrivateRoute>
-            <AdminPanel />
-          </PrivateRoute>
+          // <PrivateRoute>
+          <AdminPanel />
+          // </PrivateRoute>
         }
       >
         <Route path="posts" element={<Posts />} />
