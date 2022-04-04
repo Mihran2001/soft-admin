@@ -6,7 +6,7 @@ const MyInput = () => {
     EditorState.createEmpty()
   );
 
-  console.log(editorState.getCurrentContent());
+  console.log("editorStateeeee", editorState);
 
   return <Editor editorState={editorState} onChange={setEditorState} />;
 };

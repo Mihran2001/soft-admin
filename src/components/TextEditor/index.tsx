@@ -8,6 +8,7 @@ import {
   convertToRaw,
 } from "draft-js";
 import "draft-js/dist/Draft.css";
+import { convertToHTML, convertFromHTML } from "draft-convert";
 
 function TextEditor() {
   const [editorState, setEditorState] = useState(() =>
@@ -49,12 +50,13 @@ function TextEditor() {
     onChange(RichUtils.toggleInlineStyle(editorState, "STRIKETHROUGH"));
   };
 
-  const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
-  const value = blocks
-    .map((block) => (!block.text.trim() && "\n") || block.text)
-    .join("\n");
+  // const { blocks } = convertToRaw(editorState.getCurrentContent());
+  // const value = blocks
+  //   .map((block) => (!block.text.trim() && "\n") || block.text)
+  //   .join("\n");
 
-  console.log("editorState", value);
+  // console.log("editorState", blocks);
+  console.log(convertToHTML(editorState.getCurrentContent()));
 
   return (
     <div className="editorContainer">

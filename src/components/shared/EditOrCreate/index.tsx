@@ -8,7 +8,7 @@ import {
 } from "./styles";
 import UploadImg from "../../UploadImg";
 import TextEditor from "../../TextEditor";
-// import MyInput from "../../TestComponent";
+import MyInput from "../../TestComponent";
 
 interface IEditOrCreate {
   data?: {};
