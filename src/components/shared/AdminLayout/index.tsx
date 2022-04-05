@@ -1,19 +1,20 @@
 import React, { Children, FC } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { SLayout } from "./styles";
+import { SLayout, SHeader, SContent, SFooter, SSider } from "./styles";
 import { Link } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = Layout;
-
 const AdminLayout: FC = ({ children }) => {
+  const logOut = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <SLayout>
-      <Sider
+      <SSider
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -35,14 +36,16 @@ const AdminLayout: FC = ({ children }) => {
             <Link to={"/news"}> News</Link>
           </Menu.Item>
         </Menu>
-      </Sider>
+      </SSider>
       <Layout>
-        <Header
-          className="site-layout-sub-header-background"
-          style={{ padding: 0 }}
-        />
-        <Content style={{ margin: "24px 16px 0" }}>{children}</Content>
-        <Footer style={{ textAlign: "center" }}>Softconstruct</Footer>
+        <SHeader className="site-layout-sub-header-background">
+          <Button onClick={() => logOut()}>
+            {" "}
+            <Link to="auth">Logout</Link>{" "}
+          </Button>
+        </SHeader>
+        <SContent>{children}</SContent>
+        <SFooter style={{ textAlign: "center" }}> Softconstruct</SFooter>
       </Layout>
     </SLayout>
   );

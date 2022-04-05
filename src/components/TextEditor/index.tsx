@@ -89,7 +89,9 @@ function TextEditor() {
       >
         abc
       </button>
-
+      <label htmlFor="" style={{ display: "block", marginTop: "20px" }}>
+        Content
+      </label>
       <Editor
         editorState={editorState}
         onChange={setEditorState}

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Layout } from "antd";
 
+const { Header, Content, Footer, Sider } = Layout;
+
 export const SLayout = styled(Layout)`
-  height: 100vh;
+  min-height: 100vh;
   #components-layout-demo-responsive .logo {
     height: 32px;
     margin: 16px;
@@ -17,3 +19,17 @@ export const SLayout = styled(Layout)`
     background: #fff;
   }
 `;
+
+export const SHeader = styled(Header)`
+  display: flex;
+  justify-content: end;
+  padding: 15px;
+`;
+
+export const SContent = styled(Content)`
+  margin: 24px 16px 0;
+`;
+
+export const SFooter = styled(Footer)``;
+
+export const SSider = styled(Sider)``;

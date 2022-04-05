@@ -17,7 +17,11 @@ const LoginForm: FC = () => {
   const [password, setPassword] = useState("");
   const { login } = useAsyncActions();
 
+  console.log("location ...", location);
+
   const from = location.state?.from?.pathname || "/";
+
+  console.log("from ...", from);
 
   const submit = () => {
     login(username, password).then(() => {
@@ -30,8 +34,8 @@ const LoginForm: FC = () => {
       {error && <div style={{ color: "red" }}>{error}</div>}
       <SForm.Item
         // label="User name"
-        name="username"
-        rules={[rules.required("Please enter username!")]}
+        name="email"
+        rules={[rules.required("Please enter email!")]}
       >
         {/* <Input
           value={username}
