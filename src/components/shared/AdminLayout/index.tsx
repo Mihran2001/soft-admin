@@ -1,4 +1,4 @@
-import React, { Children, FC } from "react";
+import React, { Children, FC, useEffect } from "react";
 import { Layout, Menu, Button } from "antd";
 import {
   UploadOutlined,
@@ -7,11 +7,15 @@ import {
 } from "@ant-design/icons";
 import { SLayout, SHeader, SContent, SFooter, SSider } from "./styles";
 import { Link } from "react-router-dom";
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const AdminLayout: FC = ({ children }) => {
-  const logOut = () => {
-    localStorage.removeItem("token");
-  };
+  const { logout } = useActions();
+  // const logOut = () => {
+  //   localStorage.removeItem("token");
+  // };
+
   return (
     <SLayout>
       <SSider
@@ -39,7 +43,7 @@ const AdminLayout: FC = ({ children }) => {
       </SSider>
       <Layout>
         <SHeader className="site-layout-sub-header-background">
-          <Button onClick={() => logOut()}>
+          <Button onClick={() => logout()}>
             {" "}
             <Link to="auth">Logout</Link>{" "}
           </Button>
