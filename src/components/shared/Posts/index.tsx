@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Table from "../../Base/Table";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 
 const Posts: FC = () => {
+  // useEffect(() => {}, []);
   return (
     <div
       className="site-layout-background"
