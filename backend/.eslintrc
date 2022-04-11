@@ -1,0 +1,21 @@
+{
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "env": {
+        "browser": false,
+        "es6": true,
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "prettier/prettier": [
+            "warning",
+            {
+                "singleQuote": true,
+                "tabWidth": "4",
+                "arrowParens": "always"
+            }
+        ],
+        "no-console": "off",
+        "no-unused-vars": "off"
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "softconstruct.com",
+  "description": "softconstruct.com",
+  "private": true,
+  "version": "0.1.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon server.js",
+    "debug": "NODE_ENV=development nodemon --inspect-brk server.js",
+    "prod": "NODE_ENV=production pm2 start ecosystem.config.js",
+    "restart": "pm2 restart SOFTCONSTRUCT",
+    "kill": "pm2 delete SOFTCONSTRUCT"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "cheerio": "^1.0.0-rc.3",
+    "cloudinary": "^1.22.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "dotenv": "^8.6.0",
+    "express": "^5.0.0-alpha.8",
+    "express-fileupload": "^1.2.1",
+    "helmet": "^3.21.3",
+    "i18next": "^19.3.4",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^5.9.5",
+    "mongoose-paginate": "^5.0.3",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pm2": "^4.4.0",
+    "validator": "^13.0.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "npm-check-updates": "^4.0.4",
+    "prettier": "^2.0.1"
+  }
+}
