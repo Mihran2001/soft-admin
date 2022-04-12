@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Input, Button } from "antd";
 import styled from "styled-components";
 
 const { TextArea } = Input;
@@ -19,10 +19,14 @@ export const STextArea = styled(TextArea)`
   margin-bottom: 50px;
 `;
 
-export const InputesBox = styled.div`
+export const InputesBox = styled.form`
   display: flex;
   flex-direction: column;
   width: 50%;
 `;
 
 export const SLabel = styled.label``;
+
+export const SButton = styled(Button)`
+  margin-top: 20px;
+`;

@@ -12,6 +12,7 @@ export interface IPostTableData {
 
 export enum AdminActionEnum {
   SET_POSTS_TABLE_DATA = "SET_POSTS_TABLE_DATA",
+  CREATE_POST = "CREATE_POST",
 }
 
 export interface IAdminState {
@@ -21,6 +22,11 @@ export interface IAdminState {
 export interface SetTableDataAction {
   type: AdminActionEnum.SET_POSTS_TABLE_DATA;
   payload: IPostTableData[];
+}
+
+export interface ICratePost {
+  type: AdminActionEnum.CREATE_POST;
+  payload: IPostTableData;
 }
 
 export type AdminAction = SetTableDataAction;
