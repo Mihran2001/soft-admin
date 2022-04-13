@@ -1,13 +1,13 @@
 export interface IPostTableData {
-  id: string;
+  id?: string;
   title: string;
-  content: string;
+  content?: string;
   category: string;
-  parentCategory: string;
+  parentCategory?: string;
   titleTag: string;
   metaDescription: string;
   url: string;
-  image: string;
+  image?: string;
 }
 
 export enum AdminActionEnum {
