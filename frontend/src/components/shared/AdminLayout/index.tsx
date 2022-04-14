@@ -16,16 +16,18 @@ import { IPostTableData } from "../../../store/reducers/admin/types";
 
 const AdminLayout: FC = ({ children }) => {
   const { logout, setPostsTableData } = useActions();
-  // const { isAuth } = useTypedSelector((state) => state.auth);
+  const { postsTableData } = useTypedSelector((state) => state.admin);
 
   useEffect(() => {
     const fetchData = async () => {
       const tableData: any = await instance.get("admin/posts");
-      setPostsTableData(tableData);
+      setPostsTableData(tableData.data);
     };
     fetchData();
     // useDispatch()
   }, []);
+
+  // console.log("postsTable Data", postsTableData);
 
   return (
     <SLayout>

@@ -1,87 +1,10 @@
 import { Table, Tag, Space } from "antd";
 import { Link } from "react-router-dom";
 
-// const columns = () => [
-//   {
-//     title: "Name",
-//     dataIndex: "name",
-//     key: "name",
-//     render: (text: string) => <a>{text}</a>,
-//   },
-//   {
-//     title: "Age",
-//     dataIndex: "age",
-//     key: "age",
-//   },
-//   {
-//     title: "Address",
-//     dataIndex: "address",
-//     key: "address",
-//   },
-//   {
-//     title: "Tags",
-//     key: "tags",
-//     dataIndex: "tags",
-//     render: (tags: any[]) => (
-//       <>
-//         {tags.map((tag) => {
-//           let color = tag.length > 5 ? "geekblue" : "green";
-//           if (tag === "loser") {
-//             color = "volcano";
-//           }
-//           return (
-//             <Tag color={color} key={tag}>
-//               {tag.toUpperCase()}
-//             </Tag>
-//           );
-//         })}
-//       </>
-//     ),
-//   },
-//   {
-//     title: "Action",
-//     key: "action",
-//     render: (text: string, record: any) => (
-//       <Space size="middle">
-//         <Link to="/posts/edit">Edit</Link>
-//         <a>Delete</a>
-//       </Space>
-//     ),
-//   },
-// ];
-
-// const data = [
-//   {
-//     key: "1",
-//     name: "John Brown",
-//     age: 32,
-//     address: "New York No. 1 Lake Park",
-//     tags: ["nice", "developer"],
-//   },
-//   {
-//     key: "2",
-//     name: "Jim Green",
-//     age: 42,
-//     address: "London No. 1 Lake Park",
-//     tags: ["loser"],
-//   },
-//   {
-//     key: "3",
-//     name: "Joe Black",
-//     age: 32,
-//     address: "Sidney No. 1 Lake Park",
-//     tags: ["cool", "teacher"],
-//   },
-// ];
-
-// export default function () {
-//   return <Table columns={columns()} dataSource={data} />;
-// }
-
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
+    title: "Title",
+    dataIndex: "title",
     filters: [
       {
         text: "Joe",
@@ -119,16 +42,19 @@ const columns = [
     // filterMode: "tree",
     filterSearch: true,
     onFilter: (value: any, record: any) => record.name.includes(value),
-    width: "30%",
+    width: "20%",
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    sorter: (a: any, b: any) => a.age - b.age,
+    title: "Category",
+    dataIndex: "category",
+    width: "20%",
+
+    // sorter: (a: any, b: any) => a.age - b.age,
   },
+
   {
-    title: "Address",
-    dataIndex: "address",
+    title: "Content",
+    dataIndex: "content",
     filters: [
       {
         text: "London",
@@ -143,6 +69,18 @@ const columns = [
     filterSearch: true,
     width: "40%",
   },
+
+  // {
+  //   title: "Parent category",
+  //   dataIndex: "parentCategory",
+  //   width: "20%",
+  // },
+  // {
+  //   title: "Title tag",
+  //   dataIndex: "titleTag",
+  //   width: "20%",
+  // },
+
   {
     title: "Action",
     key: "action",

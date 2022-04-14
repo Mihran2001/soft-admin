@@ -1,10 +1,10 @@
-import axios from "axios";
+import { instance } from "../api/UserService";
 
 export function setSession(token: string) {
-  localStorage.setItem("token", token);
   if (token) {
-    axios.defaults.headers.common["Authorization"] = token;
+    localStorage.setItem("token", token);
+    instance.defaults.headers.common["Authorization"] = token;
   } else {
-    delete axios.defaults.headers.common["Authorization"];
+    delete instance.defaults.headers.common["Authorization"];
   }
 }

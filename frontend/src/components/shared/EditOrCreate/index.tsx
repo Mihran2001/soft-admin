@@ -11,6 +11,8 @@ import UploadImg from "../../UploadImg";
 import TextEditor from "../../TextEditor";
 import { IPostTableData } from "../../../store/reducers/admin/types";
 import { instance } from "../../../api/UserService";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+
 // import axios from "axios";
 
 // import MyInput from "../../TestComponent";
@@ -22,7 +24,6 @@ interface IEditOrCreate {
 const EditOrCreate: FC<IEditOrCreate> = ({ data }) => {
   const submit = async (values: any) => {
     // console.log(values);
-
     // instance.post("admin/post", {
     //   // id: "2fasfafsa31421",
     //   title: "fagfsaaaaasa",
@@ -34,8 +35,10 @@ const EditOrCreate: FC<IEditOrCreate> = ({ data }) => {
     //   url: "fsasf",
     //   image: "fsfsa",
     // });
-
-    const postCreate = await instance.post("admin/post", values);
+    // const postCreate = await instance.post("admin/post", values);
+    // console.log(postCreate);
+    // await instance.get("admin/posts");
+    // console.log("allPOsts", allPosts);
   };
 
   return (
