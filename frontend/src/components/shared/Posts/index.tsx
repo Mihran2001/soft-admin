@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import Table from "../../Base/Table";
+import Table from "../../shared/Posts/Table/index";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 

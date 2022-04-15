@@ -1,4 +1,4 @@
-import { instance } from "../api/UserService";
+import { instance } from "../api/instance";
 
 export function setSession(token: string) {
   if (token) {

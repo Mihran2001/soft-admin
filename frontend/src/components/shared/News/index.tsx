@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Table from "../../Base/Table";
+// import Table from "../../shared/Posts/Table/index";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const News: FC = () => {
       <Button style={{ marginBottom: "20px" }}>
         <Link to="/news/add"> Add News </Link>
       </Button>
-      <Table />
+      {/* <Table /> */}
     </div>
   );
 };

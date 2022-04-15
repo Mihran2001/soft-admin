@@ -1,5 +1,5 @@
 import auth from "./auth";
-import admin from "./admin";
+import admin from "./posts";
 
 export default {
   auth,

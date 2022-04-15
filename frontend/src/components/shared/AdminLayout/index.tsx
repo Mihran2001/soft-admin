@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import axios from "axios";
-import { instance } from "../../../api/UserService";
+import { instance } from "../../../api/instance";
 import { useDispatch } from "react-redux";
-import { IPostTableData } from "../../../store/reducers/admin/types";
+import { IPostTableData } from "../../../store/reducers/posts/types";
 
 const AdminLayout: FC = ({ children }) => {
   const { logout, setPostsTableData } = useActions();

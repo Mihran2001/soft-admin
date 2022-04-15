@@ -10,23 +10,23 @@ export interface IPostTableData {
   image?: string;
 }
 
-export enum AdminActionEnum {
+export enum PostsActionEnum {
   SET_POSTS_TABLE_DATA = "SET_POSTS_TABLE_DATA",
   CREATE_POST = "CREATE_POST",
 }
 
-export interface IAdminState {
+export interface IPostsState {
   postsTableData: IPostTableData[];
 }
 
 export interface SetTableDataAction {
-  type: AdminActionEnum.SET_POSTS_TABLE_DATA;
+  type: PostsActionEnum.SET_POSTS_TABLE_DATA;
   payload: IPostTableData[];
 }
 
 export interface ICratePost {
-  type: AdminActionEnum.CREATE_POST;
+  type: PostsActionEnum.CREATE_POST;
   payload: IPostTableData;
 }
 
-export type AdminAction = SetTableDataAction;
+export type PostsAction = SetTableDataAction | ICratePost;

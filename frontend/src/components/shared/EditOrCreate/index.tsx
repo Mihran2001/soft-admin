@@ -9,8 +9,8 @@ import {
 } from "./styles";
 import UploadImg from "../../UploadImg";
 import TextEditor from "../../TextEditor";
-import { IPostTableData } from "../../../store/reducers/admin/types";
-import { instance } from "../../../api/UserService";
+import { IPostTableData } from "../../../store/reducers/posts/types";
+import { instance } from "../../../api/instance";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 // import axios from "axios";
@@ -18,10 +18,10 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 // import MyInput from "../../TestComponent";
 
 interface IEditOrCreate {
-  data?: {};
+  isEdit?: {};
 }
 
-const EditOrCreate: FC<IEditOrCreate> = ({ data }) => {
+const EditOrCreate: FC<IEditOrCreate> = ({ isEdit }) => {
   const submit = async (values: any) => {
     // console.log(values);
     // instance.post("admin/post", {
@@ -35,9 +35,9 @@ const EditOrCreate: FC<IEditOrCreate> = ({ data }) => {
     //   url: "fsasf",
     //   image: "fsfsa",
     // });
-    // const postCreate = await instance.post("admin/post", values);
+    const postCreate = await instance.post("admin/post", values);
     // console.log(postCreate);
-    // await instance.get("admin/posts");
+    // await instance.post("admin/post");
     // console.log("allPOsts", allPosts);
   };
 
