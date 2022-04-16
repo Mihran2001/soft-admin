@@ -40,10 +40,14 @@ export const AuthActionCreators = {
     (username: string, password: string) => async (dispatch: AppDispatch) => {
       dispatch(AuthActionCreators.setIsLoading(true));
       try {
+        console.log(77777);
+
         const { data } = await instance.post("/auth/login", {
           email: username,
           password,
         });
+        console.log(5555);
+
         dispatch(AuthActionCreators.setIsAuth(true));
         setSession(data.token);
         return data;
