@@ -9,7 +9,7 @@ function onChange(pagination: any, filters: any, sorter: any, extra: any) {
 
 export default function Table() {
   const { postsTableData } = useTypedSelector((state) => state.admin);
-  console.log("postsTabledata", postsTableData);
+  // console.log("postsTabledata", postsTableData);
 
   // const  data.map()
 

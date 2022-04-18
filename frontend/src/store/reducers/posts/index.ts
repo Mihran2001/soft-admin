@@ -19,11 +19,11 @@ export default function adminReducer(
         ...state,
         postsTableData: action.payload,
       };
-    // case AdminActionEnum.CREATE_POST:
-    //   return {
-    //     ...state,
-    //     postsTableData: [...state.postsTableData, action.payload.data],
-    //   };
+    case PostsActionEnum.CREATE_POST:
+      return {
+        ...state,
+        postsTableData: [...state.postsTableData, action.payload],
+      };
     default:
       return state;
   }

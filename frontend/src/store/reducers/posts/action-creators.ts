@@ -12,5 +12,9 @@ export const AdminActionCreators = {
     type: PostsActionEnum.SET_POSTS_TABLE_DATA,
     payload: postsTableData,
   }),
-  // createPost: (postData: IPostTableData): ICratePost
+
+  createPost: (postData: any): ICratePost => ({
+    type: PostsActionEnum.CREATE_POST,
+    payload: postData,
+  }),
 };

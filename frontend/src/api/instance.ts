@@ -6,6 +6,7 @@ export const instance = axios.create({
   baseURL: "http://127.0.0.1:9001",
 });
 
-// export const createPost = (data: any) => {
-//   return
-// }
+export const createPostApi = async (postData: any, createPostDispatch: any) => {
+  const { data } = await instance.post("admin/post", postData);
+  createPostDispatch(data);
+};

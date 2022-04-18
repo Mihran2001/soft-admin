@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag, Space, Button } from "antd";
 
 // export const postsData = (data: any) => [
 //   {
@@ -32,40 +32,40 @@ export const columns = [
   {
     title: "Title",
     dataIndex: "title",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Category 1",
-        value: "Category 1",
-        children: [
-          {
-            text: "Yellow",
-            value: "Yellow",
-          },
-          {
-            text: "Pink",
-            value: "Pink",
-          },
-        ],
-      },
-      {
-        text: "Category 2",
-        value: "Category 2",
-        children: [
-          {
-            text: "Green",
-            value: "Green",
-          },
-          {
-            text: "Black",
-            value: "Black",
-          },
-        ],
-      },
-    ],
+    // filters: [
+    //   {
+    //     text: "Joe",
+    //     value: "Joe",
+    //   },
+    //   {
+    //     text: "Category 1",
+    //     value: "Category 1",
+    //     children: [
+    //       {
+    //         text: "Yellow",
+    //         value: "Yellow",
+    //       },
+    //       {
+    //         text: "Pink",
+    //         value: "Pink",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     text: "Category 2",
+    //     value: "Category 2",
+    //     children: [
+    //       {
+    //         text: "Green",
+    //         value: "Green",
+    //       },
+    //       {
+    //         text: "Black",
+    //         value: "Black",
+    //       },
+    //     ],
+    //   },
+    // ],
 
     // filterMode: "tree",
 
@@ -82,16 +82,16 @@ export const columns = [
   {
     title: "Category",
     dataIndex: "category",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
+    // filters: [
+    //   {
+    //     text: "London",
+    //     value: "London",
+    //   },
+    //   {
+    //     text: "New York",
+    //     value: "New York",
+    //   },
+    // ],
     onFilter: (value: any, record: any) => record.address.startsWith(value),
     filterSearch: true,
     width: "28%",
@@ -100,10 +100,13 @@ export const columns = [
   {
     title: "Action",
     key: "action",
-    render: (text: string, record: any) => (
+    dataIndex: "_id",
+    render: (id: string, record: any) => (
       <Space size="middle">
-        <Link to="/posts/edit">Edit</Link>
-        <a>Delete</a>
+        <Link to={`/posts/${id}`}>Edit</Link>
+        <Button type="link" danger>
+          Delete
+        </Button>
       </Space>
     ),
     width: "20%",
