@@ -2,7 +2,8 @@ import {
   IPostTableData,
   SetTableDataAction,
   PostsActionEnum,
-  ICratePost,
+  ICreatePost,
+  IEditPost,
 } from "./types";
 
 export const AdminActionCreators = {
@@ -13,8 +14,15 @@ export const AdminActionCreators = {
     payload: postsTableData,
   }),
 
-  createPost: (postData: any): ICratePost => ({
+  createPost: (postData: any): ICreatePost => ({
     type: PostsActionEnum.CREATE_POST,
     payload: postData,
   }),
+
+  editPost: (postData: any): IEditPost => {
+    return {
+      type: PostsActionEnum.EDIT_POST,
+      payload: postData,
+    };
+  },
 };

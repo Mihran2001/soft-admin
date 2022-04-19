@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   PostEditWrapper,
   SInput,
   STextArea,
+  SButton,
   SLabel,
   SForm,
   SubmitInputBox,
@@ -17,18 +18,19 @@ import { useAsyncActions } from "hooks/useActions";
 interface IEditOrCreate {
   isEdit?: {};
   onSubmit?: any;
+  postData?: any;
 }
 
-const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit }) => {
-  const { createPost } = useAsyncActions();
-  const submit = async (values: any) => {
-    createPostApi(values, createPost);
-  };
+const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
+  // const { createPost } = useAsyncActions();
+  // const submit = async (values: any) => {
+  //   createPostApi(values, createPost);
+  // };
 
   return (
     <PostEditWrapper>
       <TextEditor />
-      <SForm onFinish={submit} layout={"vertical"}>
+      <SForm onFinish={onSubmit} layout={"vertical"}>
         <SForm.Item name="title" label="Title">
           {/* <SLabel>Title</SLabel> */}
           <SInput placeholder="Title" />
@@ -62,7 +64,9 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit }) => {
 
         {/* <MyInput /> */}
         <SubmitInputBox>
-          <SInput submitInput={true} type="submit" value="Submit" />
+          {/* <SInput submitInput={true} type="submit" value="Submit" /> */}
+
+          <SButton htmlType="submit">Submit</SButton>
         </SubmitInputBox>
       </SForm>
     </PostEditWrapper>

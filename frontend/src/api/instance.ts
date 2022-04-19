@@ -10,3 +10,8 @@ export const createPostApi = async (postData: any, createPostDispatch: any) => {
   const { data } = await instance.post("admin/post", postData);
   createPostDispatch(data);
 };
+
+export const editPostApi = async (postData: any, editPostDispatch: any) => {
+  const { data } = await instance.put(`admin/post/${postData.id}`, postData);
+  editPostDispatch(data);
+};

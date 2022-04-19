@@ -23,6 +23,10 @@ export const SInput = styled(Input)<{ submitInput?: boolean }>`
   `}
 `;
 
+export const SButton = styled(Button)`
+  margin-bottom: 30px;
+`;
+
 export const STextArea = styled(TextArea)`
   margin-bottom: 50px;
 `;

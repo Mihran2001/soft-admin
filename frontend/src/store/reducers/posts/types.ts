@@ -13,6 +13,7 @@ export interface IPostTableData {
 export enum PostsActionEnum {
   SET_POSTS_TABLE_DATA = "SET_POSTS_TABLE_DATA",
   CREATE_POST = "CREATE_POST",
+  EDIT_POST = "EDIT_POST",
 }
 
 export interface IPostsState {
@@ -24,9 +25,14 @@ export interface SetTableDataAction {
   payload: IPostTableData[];
 }
 
-export interface ICratePost {
+export interface ICreatePost {
   type: PostsActionEnum.CREATE_POST;
   payload: IPostTableData;
 }
 
-export type PostsAction = SetTableDataAction | ICratePost;
+export interface IEditPost {
+  type: PostsActionEnum.EDIT_POST;
+  payload: IPostTableData;
+}
+
+export type PostsAction = SetTableDataAction | ICreatePost | IEditPost;

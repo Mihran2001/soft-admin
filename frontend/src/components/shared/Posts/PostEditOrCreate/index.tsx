@@ -1,23 +1,44 @@
+import React, { FC, useEffect } from "react";
 import EditOrCreate from "components/shared/EditOrCreate";
 import { useTypedSelector } from "hooks/useTypedSelector";
-import React, { FC, useEffect } from "react";
+import { useAsyncActions } from "hooks/useActions";
 import { useParams } from "react-router-dom";
+import { createPostApi, editPostApi } from "api/instance";
 
 const PostEditOrCreate: FC = () => {
-  const { id } = useParams();
-  // console.log(id);
+  const { createPost, editPost } = useAsyncActions();
 
   const { postsTableData } = useTypedSelector((state) => state.admin);
-  const choosenPostData = postsTableData?.find((item) => item.id == id);
+  const { id } = useParams();
 
-  // console.log("postTableData", postsTableData);
-  console.log("choosenPost", choosenPostData);
+  const findedPostData = postsTableData?.find(
+    (item) => (item as any)._id === id
+  );
 
-  if (postsTableData.length) {
-    return <>{id ? <EditOrCreate isEdit={true} /> : <EditOrCreate />}</>;
-  } else {
-    return <>loading</>;
-  }
+  const onSubmitCreate = (values: any) => {
+    if (id) {
+      createPostApi(values, createPost);
+    } else {
+      editPostApi(values, editPost);
+    }
+  };
+
+  console.log("postTableData", postsTableData);
+  // console.log("findedPostData", findedPostData);
+
+  return (
+    <>
+      {/* {id ? ( */}
+      <EditOrCreate
+        isEdit={!!id}
+        postData={findedPostData}
+        onSubmit={onSubmitCreate}
+      />
+      {/* ) : (
+        <EditOrCreate onSubmit={onSubmitCreate} />
+      )} */}
+    </>
+  );
 };
 
 export default PostEditOrCreate;
