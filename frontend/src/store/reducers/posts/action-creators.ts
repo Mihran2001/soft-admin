@@ -4,6 +4,7 @@ import {
   PostsActionEnum,
   ICreatePost,
   IEditPost,
+  IDeletePost,
 } from "./types";
 
 export const AdminActionCreators = {
@@ -25,4 +26,8 @@ export const AdminActionCreators = {
       payload: postData,
     };
   },
+  deletePost: (id: string): IDeletePost => ({
+    type: PostsActionEnum.DELETE_POST,
+    payload: id,
+  }),
 };

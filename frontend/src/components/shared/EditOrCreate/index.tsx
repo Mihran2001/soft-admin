@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import {
   PostEditWrapper,
   SInput,
@@ -14,6 +14,8 @@ import { IPostTableData } from "../../../store/reducers/posts/types";
 import { createPostApi, instance } from "../../../api/instance";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useAsyncActions } from "hooks/useActions";
+import { formItems } from "constants/postFormItems";
+import { createPostInitialData } from "constants/postFormItems";
 
 interface IEditOrCreate {
   isEdit?: {};
@@ -22,50 +24,34 @@ interface IEditOrCreate {
 }
 
 const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
-  // const { createPost } = useAsyncActions();
-  // const submit = async (values: any) => {
-  //   createPostApi(values, createPost);
-  // };
+  // console.log("postDataaaaaaaaaaaaa", postData);
+
+  const findedPostData = useMemo(() => {
+    if (isEdit) {
+      return postData;
+    } else {
+      return createPostInitialData;
+    }
+  }, [postData, isEdit]);
 
   return (
     <PostEditWrapper>
       <TextEditor />
-      <SForm onFinish={onSubmit} layout={"vertical"}>
-        <SForm.Item name="title" label="Title">
-          {/* <SLabel>Title</SLabel> */}
-          <SInput placeholder="Title" />
-        </SForm.Item>
-
-        <SForm.Item name="url" label="URL">
-          <SInput placeholder="URL" />
-        </SForm.Item>
-
-        <SForm.Item name="category" label="Category">
-          <SInput placeholder="Category" />
-        </SForm.Item>
-
-        <SForm.Item name="parentCategory" label="Parent Category">
-          <SInput placeholder="Parent Category" />
-        </SForm.Item>
-
-        <SForm.Item name="metaDescription" label="Meta Description">
-          <SInput placeholder="Meta Description" />
-        </SForm.Item>
-
-        <SForm.Item name="titleTag" label="Title Tag">
-          <SInput placeholder="Title Tag" />
-        </SForm.Item>
-
-        {/* 
-        <SLabel>Content</SLabel>
-        <STextArea placeholder="Content" /> */}
-
+      <SForm
+        onFinish={onSubmit}
+        layout={"vertical"}
+        initialValues={findedPostData}
+      >
+        {formItems.map((item) => {
+          return (
+            <SForm.Item name={item.name} label={item.label}>
+              <SInput placeholder={item.label} />
+            </SForm.Item>
+          );
+        })}
         <UploadImg />
 
-        {/* <MyInput /> */}
         <SubmitInputBox>
-          {/* <SInput submitInput={true} type="submit" value="Submit" /> */}
-
           <SButton htmlType="submit">Submit</SButton>
         </SubmitInputBox>
       </SForm>

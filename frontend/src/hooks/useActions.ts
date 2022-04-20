@@ -9,7 +9,8 @@ import { AdminActionCreators } from "store/reducers/posts/action-creators";
 
 export const useActions = () => {
   const dispatch = useDispatch();
-  const { login, createPost, editPost, ...syncCreators } = allActionCreators;
+  const { login, createPost, editPost, deletePost, ...syncCreators } =
+    allActionCreators;
 
   return bindActionCreators({ ...syncCreators }, dispatch);
 };
@@ -34,9 +35,15 @@ export const useAsyncActions = () => {
     [dispatch]
   );
 
+  const deletePost = useCallback(
+    (id: string) => dispatch(AdminActionCreators.deletePost(id)),
+    [dispatch]
+  );
+
   return {
     login,
     createPost,
     editPost,
+    deletePost,
   };
 };

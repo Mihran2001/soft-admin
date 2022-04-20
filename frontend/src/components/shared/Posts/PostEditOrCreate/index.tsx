@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect, useMemo } from "react";
 import EditOrCreate from "components/shared/EditOrCreate";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { useAsyncActions } from "hooks/useActions";
@@ -11,33 +11,26 @@ const PostEditOrCreate: FC = () => {
   const { postsTableData } = useTypedSelector((state) => state.admin);
   const { id } = useParams();
 
-  const findedPostData = postsTableData?.find(
+  const findedPostData = postsTableData.find(
     (item) => (item as any)._id === id
   );
 
+  // console.log("id", id);
+
   const onSubmitCreate = (values: any) => {
-    if (id) {
+    if (id === "add") {
       createPostApi(values, createPost);
     } else {
-      editPostApi(values, editPost);
+      editPostApi({ ...values, id }, editPost);
     }
   };
 
-  console.log("postTableData", postsTableData);
-  // console.log("findedPostData", findedPostData);
-
   return (
-    <>
-      {/* {id ? ( */}
-      <EditOrCreate
-        isEdit={!!id}
-        postData={findedPostData}
-        onSubmit={onSubmitCreate}
-      />
-      {/* ) : (
-        <EditOrCreate onSubmit={onSubmitCreate} />
-      )} */}
-    </>
+    <EditOrCreate
+      isEdit={!!id}
+      postData={findedPostData}
+      onSubmit={onSubmitCreate}
+    />
   );
 };
 

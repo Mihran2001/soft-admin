@@ -6,13 +6,13 @@ import {
   SetUserAction,
   RemoveUserAction,
 } from "./types";
-import { IUser } from "../../../models/IUser";
+import { IUser } from "models/IUser";
 import { AppDispatch } from "../../index";
 import axios from "axios";
 // import UserService from "../../../api/UserService";
-import { instance } from "../../../api/instance";
-import { setSession } from "../../../helpers/setSession";
-import { removeSession } from "../../../helpers/removeSession";
+import { instance } from "api/instance";
+import { setSession } from "helpers/setSession";
+import { removeSession } from "helpers/removeSession";
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({
