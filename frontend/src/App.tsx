@@ -9,14 +9,9 @@ function App() {
   const { isAuth } = useTypedSelector((state) => state.auth);
   const token: any = localStorage.getItem("token");
 
-  console.log("isAuth", isAuth);
-
   if (isAuth) {
     setSession(token);
   }
-
-  // const { postsTableData } = useTypedSelector((state) => state.admin);
-  // console.log(postsTableData);
 
   return <AppRouter />;
 }

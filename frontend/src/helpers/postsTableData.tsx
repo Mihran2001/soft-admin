@@ -105,7 +105,11 @@ export const columns = (deletePost: any) => [
     render: (id: string, record: any) => (
       <Space size="middle">
         <Link to={`/posts/${id}`}>Edit</Link>
-        <Button type="link" danger onClick={() => deletePost(id)}>
+        <Button
+          type="link"
+          danger
+          onClick={() => deletePostApi(id, deletePost)}
+        >
           Delete
         </Button>
       </Space>

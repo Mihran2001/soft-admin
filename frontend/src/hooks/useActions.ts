@@ -24,6 +24,11 @@ export const useAsyncActions = () => {
     [dispatch]
   );
 
+  const setTabaleData = useCallback(
+    (data: any) => dispatch(AdminActionCreators.setPostsTableData(data)),
+    [dispatch]
+  );
+
   const createPost = useCallback(
     (cratePostData: any) =>
       dispatch(AdminActionCreators.createPost(cratePostData)),
@@ -45,5 +50,6 @@ export const useAsyncActions = () => {
     createPost,
     editPost,
     deletePost,
+    setTabaleData,
   };
 };

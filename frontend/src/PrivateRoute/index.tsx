@@ -11,8 +11,6 @@ const PrivateRoute: React.FC<Props> = ({ children, redirect = "/auth" }) => {
   const { isAuth } = useTypedSelector((state) => state.auth);
   let location = useLocation();
 
-  // console.log(isAuth);
-
   return isAuth ? (
     <>{children}</>
   ) : (

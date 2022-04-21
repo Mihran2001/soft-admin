@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import ReactDOM from "react-dom";
 import {
   Editor,
@@ -10,7 +10,12 @@ import {
 import "draft-js/dist/Draft.css";
 import { convertToHTML, convertFromHTML } from "draft-convert";
 
-function TextEditor() {
+interface ITextEditor {
+  editorContent: string;
+  setEditorContent: string;
+}
+
+const TextEditor: FC<any> = ({ editorContent, setEditorContent }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -50,13 +55,8 @@ function TextEditor() {
     onChange(RichUtils.toggleInlineStyle(editorState, "STRIKETHROUGH"));
   };
 
-  // const { blocks } = convertToRaw(editorState.getCurrentContent());
-  // const value = blocks
-  //   .map((block) => (!block.text.trim() && "\n") || block.text)
-  //   .join("\n");
-
-  // console.log("editorState", blocks);
-  console.log(convertToHTML(editorState.getCurrentContent()));
+  // console.log(convertToHTML(editorState.getCurrentContent()));
+  setEditorContent(convertToHTML(editorState.getCurrentContent()));
 
   return (
     <div className="editorContainer">
@@ -100,6 +100,6 @@ function TextEditor() {
       />
     </div>
   );
-}
+};
 
 export default TextEditor;

@@ -11,8 +11,6 @@ const GuestRoute: React.FC<Props> = ({ children, redirect = "/" }) => {
   const { isAuth } = useTypedSelector((state) => state.auth);
   let location = useLocation();
 
-  // console.log(isAuth);
-
   return !isAuth ? (
     <>{children}</>
   ) : (

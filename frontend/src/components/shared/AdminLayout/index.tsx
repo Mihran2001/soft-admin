@@ -1,33 +1,19 @@
 import React, { Children, FC, useEffect } from "react";
+import { useTypedSelector } from "hooks/useTypedSelector";
 import { Layout, Menu, Button } from "antd";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
 import { SLayout, SHeader, SContent, SFooter, SSider } from "./styles";
 import { Link } from "react-router-dom";
-import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import axios from "axios";
-import { instance } from "../../../api/instance";
-import { useDispatch } from "react-redux";
-import { IPostTableData } from "../../../store/reducers/posts/types";
+import { useActions, useAsyncActions } from "hooks/useActions";
+import { setPostsTableDataApi } from "api/instance";
 
 const AdminLayout: FC = ({ children }) => {
-  const { logout, setPostsTableData } = useActions();
+  const { logout } = useActions();
+  const { setTabaleData } = useAsyncActions();
   const { postsTableData } = useTypedSelector((state) => state.admin);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const tableData: any = await instance.get("admin/posts");
-      setPostsTableData(tableData.data);
-    };
-    fetchData();
-    // useDispatch()
+    setPostsTableDataApi(setTabaleData);
   }, []);
-
-  // console.log("postsTable Data", postsTableData);
 
   return (
     <SLayout>

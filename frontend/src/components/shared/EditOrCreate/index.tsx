@@ -10,10 +10,6 @@ import {
 } from "./styles";
 import UploadImg from "../../UploadImg";
 import TextEditor from "../../TextEditor";
-import { IPostTableData } from "../../../store/reducers/posts/types";
-import { createPostApi, instance } from "../../../api/instance";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useAsyncActions } from "hooks/useActions";
 import { formItems } from "constants/postFormItems";
 import { createPostInitialData } from "constants/postFormItems";
 
@@ -24,8 +20,7 @@ interface IEditOrCreate {
 }
 
 const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
-  // console.log("postDataaaaaaaaaaaaa", postData);
-
+  const [editorContent, setEditorContent] = useState("");
   const findedPostData = useMemo(() => {
     if (isEdit) {
       return postData;
@@ -34,11 +29,21 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
     }
   }, [postData, isEdit]);
 
+  const onFinish = (values: any) => {
+    return onSubmit({ ...values, content: editorContent });
+  };
+
+  // console.log("editorContent", editorContent);
+
   return (
     <PostEditWrapper>
-      <TextEditor />
+      <TextEditor
+        editorContent={editorContent}
+        setEditorContent={setEditorContent}
+      />
+
       <SForm
-        onFinish={onSubmit}
+        onFinish={onFinish}
         layout={"vertical"}
         initialValues={findedPostData}
       >

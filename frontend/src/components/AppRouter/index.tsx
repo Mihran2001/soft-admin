@@ -23,7 +23,6 @@ const AppRouter: React.FC<{}> = () => {
       >
         <Route path="posts" element={<Posts />} />
         <Route path="posts/:id" element={<PostEditOrCreate />} />
-        {/* <Route path="posts/add" element={<EditOrCreate add />} /> */}
         <Route path="news" element={<News />} />
         <Route path="news/edit" element={<EditOrCreate />} />
         <Route path="news/add" element={<EditOrCreate />} />
