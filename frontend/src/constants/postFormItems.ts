@@ -1,3 +1,5 @@
+import { getInitialState } from "components/TextEditor";
+
 export const formItems = [
   { name: "title", label: "Title" },
   { name: "url", label: "URL" },
@@ -7,11 +9,12 @@ export const formItems = [
   { name: "titleTag", label: "Title Tag" },
 ];
 
-export const createPostInitialData = {
+export const postInitialData = {
   title: "",
   url: "",
   category: "",
   parentCategory: "",
   metaDescription: "",
   titleTag: "",
+  content: getInitialState(),
 };

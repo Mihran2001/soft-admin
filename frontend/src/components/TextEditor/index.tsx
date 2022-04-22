@@ -1,31 +1,43 @@
-import React, { useState, FC } from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import {
   Editor,
   EditorState,
   RichUtils,
   ContentState,
-  convertToRaw,
+  convertFromHTML,
 } from "draft-js";
 import "draft-js/dist/Draft.css";
-import { convertToHTML, convertFromHTML } from "draft-convert";
+import { convertToHTML } from "draft-convert";
+import { Root, SButton } from "./styled";
 
-interface ITextEditor {
-  editorContent: string;
-  setEditorContent: string;
-}
-
-const TextEditor: FC<any> = ({ editorContent, setEditorContent }) => {
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
+export const deserializeEditorValue = (html: string) => {
+  const blocksFromHTML = convertFromHTML(html);
+  const state = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
   );
 
-  const onChange = (editorState: any) => {
-    setEditorState(editorState);
-  };
+  return EditorState.createWithContent(state);
+};
+export const getInitialState = () => EditorState.createEmpty();
+export const serializeEditorValue = (editorState: EditorState) =>
+  convertToHTML(editorState.getCurrentContent());
 
+export const convertHTMLToString = (htmlString: string) =>
+  htmlString.replace(/<[^>]+>/g, "");
+
+interface IProps {
+  value?: EditorState;
+  onChange?: (editorState: EditorState) => void;
+}
+
+const TextEditor: React.FC<IProps> = ({
+  value = getInitialState(),
+  onChange = () => {},
+}) => {
+  const [activeStyle, setActiveStyle] = useState("");
   const handleKeyCommand = (command: any) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
+    const newState = RichUtils.handleKeyCommand(value, command);
     if (newState) {
       onChange(newState);
       return "handled";
@@ -35,70 +47,70 @@ const TextEditor: FC<any> = ({ editorContent, setEditorContent }) => {
 
   const onUnderlineClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(editorState, "UNDERLINE"));
+    onChange(RichUtils.toggleInlineStyle(value, "UNDERLINE"));
   };
 
   const onBoldClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
+    onChange(RichUtils.toggleInlineStyle(value, "BOLD"));
   };
 
   const onItalicClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(editorState, "ITALIC"));
+    onChange(RichUtils.toggleInlineStyle(value, "ITALIC"));
   };
 
   const onStrikeThroughClick: React.MouseEventHandler<HTMLButtonElement> = (
     e
   ) => {
     e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(editorState, "STRIKETHROUGH"));
+    onChange(RichUtils.toggleInlineStyle(value, "STRIKETHROUGH"));
   };
 
-  // console.log(convertToHTML(editorState.getCurrentContent()));
-  setEditorContent(convertToHTML(editorState.getCurrentContent()));
-
   return (
-    <div className="editorContainer">
-      <button
-        className="inline styleButton editorButtons"
+    <Root>
+      <SButton
+        // className="inline styleButton editorButtons "
+        className={`inline styleButton editorButtons ${activeStyle}`}
         id="underline"
         onMouseDown={onUnderlineClick}
+        type="button"
       >
         U
-      </button>
+      </SButton>
 
-      <button
+      <SButton
         className="inline styleButton editor-buttons"
         id="bold"
         onMouseDown={onBoldClick}
+        type="button"
       >
         B
-      </button>
+      </SButton>
 
-      <button
+      <SButton
         className="inline styleButton editor-buttons"
         id="italic"
         onMouseDown={onItalicClick}
+        type="button"
       >
         I
-      </button>
-      <button
+      </SButton>
+      <SButton
         className="inline styleButton strikethrough editor-buttons"
         onMouseDown={onStrikeThroughClick}
+        type="button"
       >
         abc
-      </button>
-      <label htmlFor="" style={{ display: "block", marginTop: "20px" }}>
-        Content
-      </label>
+      </SButton>
+
       <Editor
-        editorState={editorState}
-        onChange={setEditorState}
+        editorState={value}
+        onChange={onChange}
         handleKeyCommand={handleKeyCommand}
         placeholder="Content"
       />
-    </div>
+    </Root>
   );
 };
 

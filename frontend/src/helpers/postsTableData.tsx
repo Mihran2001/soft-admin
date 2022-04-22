@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Table, Tag, Space, Button } from "antd";
 import { deletePostApi } from "api/instance";
+import { convertHTMLToString } from "components/TextEditor";
 
 // export const postsData = (data: any) => [
 //   {
@@ -78,6 +79,8 @@ export const columns = (deletePost: any) => [
     title: "Content",
     dataIndex: "content",
     width: "28%",
+    ellipsis: true,
+    render: (value: string) => convertHTMLToString(value),
   },
 
   {

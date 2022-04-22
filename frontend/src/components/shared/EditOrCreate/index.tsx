@@ -9,9 +9,12 @@ import {
   SubmitInputBox,
 } from "./styles";
 import UploadImg from "../../UploadImg";
-import TextEditor from "../../TextEditor";
+import TextEditor, {
+  serializeEditorValue,
+  deserializeEditorValue,
+} from "../../TextEditor";
 import { formItems } from "constants/postFormItems";
-import { createPostInitialData } from "constants/postFormItems";
+import { postInitialData } from "constants/postFormItems";
 
 interface IEditOrCreate {
   isEdit?: {};
@@ -20,33 +23,34 @@ interface IEditOrCreate {
 }
 
 const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
-  const [editorContent, setEditorContent] = useState("");
-  const findedPostData = useMemo(() => {
-    if (isEdit) {
-      return postData;
-    } else {
-      return createPostInitialData;
-    }
-  }, [postData, isEdit]);
-
+  const [form] = SForm.useForm();
   const onFinish = (values: any) => {
-    return onSubmit({ ...values, content: editorContent });
+    return onSubmit({
+      ...values,
+      content: serializeEditorValue(values.content),
+    });
   };
 
-  // console.log("editorContent", editorContent);
+  useEffect(() => {
+    if (postData) {
+      form.setFieldsValue({
+        ...postData,
+        content: deserializeEditorValue(postData.content),
+      });
+    }
+  }, [form, postData]);
 
   return (
     <PostEditWrapper>
-      <TextEditor
-        editorContent={editorContent}
-        setEditorContent={setEditorContent}
-      />
-
       <SForm
         onFinish={onFinish}
         layout={"vertical"}
-        initialValues={findedPostData}
+        initialValues={postInitialData}
+        form={form}
       >
+        <SForm.Item name={"content"} label={"Content"}>
+          <TextEditor />
+        </SForm.Item>
         {formItems.map((item) => {
           return (
             <SForm.Item name={item.name} label={item.label}>
