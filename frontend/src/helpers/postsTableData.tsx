@@ -34,45 +34,6 @@ export const columns = (deletePost: any) => [
   {
     title: "Title",
     dataIndex: "title",
-    // filters: [
-    //   {
-    //     text: "Joe",
-    //     value: "Joe",
-    //   },
-    //   {
-    //     text: "Category 1",
-    //     value: "Category 1",
-    //     children: [
-    //       {
-    //         text: "Yellow",
-    //         value: "Yellow",
-    //       },
-    //       {
-    //         text: "Pink",
-    //         value: "Pink",
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     text: "Category 2",
-    //     value: "Category 2",
-    //     children: [
-    //       {
-    //         text: "Green",
-    //         value: "Green",
-    //       },
-    //       {
-    //         text: "Black",
-    //         value: "Black",
-    //       },
-    //     ],
-    //   },
-    // ],
-
-    // filterMode: "tree",
-
-    filterSearch: true,
-    onFilter: (value: any, record: any) => record.name.includes(value),
     width: "28%",
   },
   {
@@ -86,17 +47,21 @@ export const columns = (deletePost: any) => [
   {
     title: "Category",
     dataIndex: "category",
-    // filters: [
-    //   {
-    //     text: "London",
-    //     value: "London",
-    //   },
-    //   {
-    //     text: "New York",
-    //     value: "New York",
-    //   },
-    // ],
-    onFilter: (value: any, record: any) => record.address.startsWith(value),
+    filters: [
+      {
+        text: "design",
+        value: "design",
+      },
+      {
+        text: "marketing",
+        value: "marketing",
+      },
+      {
+        text: "development",
+        value: "development",
+      },
+    ],
+    onFilter: (value: any, record: any) => record.category.startsWith(value),
     filterSearch: true,
     width: "28%",
   },
