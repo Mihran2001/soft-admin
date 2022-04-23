@@ -18,9 +18,7 @@ export const Root = styled.div`
     font-size: 12px;
     text-align: center;
   }
-  .h100 {
-    height: calc(100vh);
-  }
+
   .DraftEditor-root {
     background-color: white;
     border: 1px transparent solid;
@@ -33,6 +31,20 @@ export const Root = styled.div`
     text-align: left;
     line-height: 1.5em;
     color: black;
+  }
+
+  .RichEditor-styleButton {
+    padding: 0.25em;
+    background: #f9fbfc;
+    border: none;
+    color: #3b465d;
+    margin: 0.35em;
+    border-radius: 6px;
+    width: 2.5em;
+    font-family: "Lato";
+    font-size: 90%;
+    box-shadow: 2px 2px edf3f9;
+    height: 2.25em;
   }
 `;
 
@@ -48,33 +60,16 @@ export const SButton = styled.button`
   border: none;
   color: #263135;
   #link_url,
-  .RichEditor-styleButton {
-    padding: 0.25em;
-    background: #f9fbfc;
-    border: none;
-    color: #3b465d;
-    margin: 0.35em;
-    border-radius: 6px;
-    width: 2.5em;
-    font-family: "Lato";
-    font-size: 90%;
-    box-shadow: 2px 2px edf3f9;
-    height: 2.25em;
-  }
-  styleButton#bold {
+  #bold {
     font-weight: 800;
   }
 
-  .styleButton#italic {
+  #italic {
     font-style: italic;
     font-family: "PT Serif";
   }
 
-  .styleButton#underline {
+  #underline {
     text-decoration: underline;
-  }
-
-  .strikethrough {
-    text-decoration: line-through;
   }
 `;

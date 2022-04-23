@@ -39,7 +39,6 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
       });
     }
   }, [form, postData]);
-
   return (
     <PostEditWrapper>
       <SForm

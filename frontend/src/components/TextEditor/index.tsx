@@ -9,6 +9,7 @@ import {
 import "draft-js/dist/Draft.css";
 import { convertToHTML } from "draft-convert";
 import { Root, SButton } from "./styled";
+import InlineStyleControls from "./InitialStylesControl";
 
 export const deserializeEditorValue = (html: string) => {
   const blocksFromHTML = convertFromHTML(html);
@@ -35,7 +36,8 @@ const TextEditor: React.FC<IProps> = ({
   value = getInitialState(),
   onChange = () => {},
 }) => {
-  const [activeStyle, setActiveStyle] = useState("");
+  // console.log(value.getCurrentInlineStyle().has("BOLD"));
+
   const handleKeyCommand = (command: any) => {
     const newState = RichUtils.handleKeyCommand(value, command);
     if (newState) {
@@ -45,33 +47,38 @@ const TextEditor: React.FC<IProps> = ({
     return "not-handled";
   };
 
-  const onUnderlineClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(value, "UNDERLINE"));
-  };
+  // const onUnderlineClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  //   e.preventDefault();
+  //   onChange(RichUtils.toggleInlineStyle(value, "UNDERLINE"));
+  // };
 
-  const onBoldClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(value, "BOLD"));
-  };
+  // const onBoldClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  //   e.preventDefault();
+  //   onChange(RichUtils.toggleInlineStyle(value, "BOLD"));
+  // };
 
-  const onItalicClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(value, "ITALIC"));
-  };
+  // const onItalicClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  //   e.preventDefault();
+  //   onChange(RichUtils.toggleInlineStyle(value, "ITALIC"));
+  // };
 
-  const onStrikeThroughClick: React.MouseEventHandler<HTMLButtonElement> = (
-    e
-  ) => {
-    e.preventDefault();
-    onChange(RichUtils.toggleInlineStyle(value, "STRIKETHROUGH"));
+  // const onStrikeThroughClick: React.MouseEventHandler<HTMLButtonElement> = (
+  //   e
+  // ) => {
+  //   e.preventDefault();
+  //   onChange(RichUtils.toggleInlineStyle(value, "STRIKETHROUGH"));
+  // };
+
+  const toggleInlineStyle: any = (inlineStyle: any) => {
+    const newState = RichUtils.toggleInlineStyle(value, inlineStyle);
+    onChange(newState);
   };
 
   return (
     <Root>
-      <SButton
+      {/* <SButton
         // className="inline styleButton editorButtons "
-        className={`inline styleButton editorButtons ${activeStyle}`}
+        // className={`inline styleButton editorButtons ${activeStyle}`}
         id="underline"
         onMouseDown={onUnderlineClick}
         type="button"
@@ -80,7 +87,7 @@ const TextEditor: React.FC<IProps> = ({
       </SButton>
 
       <SButton
-        className="inline styleButton editor-buttons"
+        // className="inline styleButton editor-buttons"
         id="bold"
         onMouseDown={onBoldClick}
         type="button"
@@ -89,7 +96,7 @@ const TextEditor: React.FC<IProps> = ({
       </SButton>
 
       <SButton
-        className="inline styleButton editor-buttons"
+        // className="inline styleButton editor-buttons"
         id="italic"
         onMouseDown={onItalicClick}
         type="button"
@@ -97,12 +104,17 @@ const TextEditor: React.FC<IProps> = ({
         I
       </SButton>
       <SButton
-        className="inline styleButton strikethrough editor-buttons"
+        className="strikethrough"
         onMouseDown={onStrikeThroughClick}
         type="button"
       >
         abc
-      </SButton>
+      </SButton> */}
+
+      <InlineStyleControls
+        currentInlineStyle={value.getCurrentInlineStyle()}
+        onToggle={toggleInlineStyle}
+      />
 
       <Editor
         editorState={value}
