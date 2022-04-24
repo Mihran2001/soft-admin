@@ -15,6 +15,7 @@ import TextEditor, {
 } from "../../TextEditor";
 import { formItems } from "constants/postFormItems";
 import { postInitialData } from "constants/postFormItems";
+import { IPostTableData } from "store/reducers/posts/types";
 
 interface IEditOrCreate {
   isEdit?: {};
@@ -24,7 +25,10 @@ interface IEditOrCreate {
 
 const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
   const [form] = SForm.useForm();
+
   const onFinish = (values: any) => {
+    console.log("Form", form);
+
     return onSubmit({
       ...values,
       content: serializeEditorValue(values.content),

@@ -6,6 +6,7 @@ import { AuthActionCreators } from "../store/reducers/auth/action-creators";
 
 import { ThunkDispatch } from "redux-thunk";
 import { AdminActionCreators } from "store/reducers/posts/action-creators";
+import { IPostTableData } from "store/reducers/posts/types";
 
 export const useActions = () => {
   const dispatch = useDispatch();
@@ -25,18 +26,20 @@ export const useAsyncActions = () => {
   );
 
   const setTabaleData = useCallback(
-    (data: any) => dispatch(AdminActionCreators.setPostsTableData(data)),
+    (data: IPostTableData[]) =>
+      dispatch(AdminActionCreators.setPostsTableData(data)),
     [dispatch]
   );
 
   const createPost = useCallback(
-    (cratePostData: any) =>
+    (cratePostData: IPostTableData) =>
       dispatch(AdminActionCreators.createPost(cratePostData)),
     [dispatch]
   );
 
   const editPost = useCallback(
-    (editPostData: any) => dispatch(AdminActionCreators.editPost(editPostData)),
+    (editPostData: IPostTableData) =>
+      dispatch(AdminActionCreators.editPost(editPostData)),
     [dispatch]
   );
 

@@ -25,10 +25,10 @@ export default function adminReducer(
         postsTableData: [...state.postsTableData, action.payload],
       };
     case PostsActionEnum.EDIT_POST:
-      const id = (action.payload as any)._id;
+      const id = action.payload._id;
 
       const editedPostsData = state.postsTableData.map((item) => {
-        if ((item as any)._id === id) {
+        if (item._id === id) {
           return action.payload;
         }
         return item;
@@ -40,7 +40,7 @@ export default function adminReducer(
       };
     case PostsActionEnum.DELETE_POST:
       const filteredTableData = state.postsTableData.filter(
-        (item) => action.payload !== (item as any)._id
+        (item) => action.payload !== item._id
       );
       console.log("id", action.payload);
       return { ...state, postsTableData: filteredTableData };

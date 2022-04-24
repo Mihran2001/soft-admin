@@ -1,4 +1,5 @@
 export interface IPostTableData {
+  _id?: string;
   id?: string;
   title: string;
   content?: string;

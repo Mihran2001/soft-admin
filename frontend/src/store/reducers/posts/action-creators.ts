@@ -15,12 +15,12 @@ export const AdminActionCreators = {
     payload: postsTableData,
   }),
 
-  createPost: (postData: any): ICreatePost => ({
+  createPost: (postData: IPostTableData): ICreatePost => ({
     type: PostsActionEnum.CREATE_POST,
     payload: postData,
   }),
 
-  editPost: (postData: any): IEditPost => {
+  editPost: (postData: IPostTableData): IEditPost => {
     return {
       type: PostsActionEnum.EDIT_POST,
       payload: postData,
