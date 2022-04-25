@@ -8,7 +8,7 @@ function onChange(pagination: any, filters: any, sorter: any, extra: any) {
 }
 
 export default function Table() {
-  const { postsTableData } = useTypedSelector((state) => state.admin);
+  const { postsTableData } = useTypedSelector((state) => state.posts);
   const { deletePost } = useAsyncActions();
 
   return (

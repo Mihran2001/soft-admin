@@ -8,11 +8,11 @@ import { setPostsTableDataApi } from "api/instance";
 
 const AdminLayout: FC = ({ children }) => {
   const { logout } = useActions();
-  const { setTabaleData } = useAsyncActions();
-  const { postsTableData } = useTypedSelector((state) => state.admin);
+  const { setPostsTabaleData } = useAsyncActions();
+  const { postsTableData } = useTypedSelector((state) => state.posts);
 
   useEffect(() => {
-    setPostsTableDataApi(setTabaleData);
+    setPostsTableDataApi(setPostsTabaleData);
   }, []);
 
   return (

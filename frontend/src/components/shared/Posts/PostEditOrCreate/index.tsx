@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const PostEditOrCreate: FC = () => {
   const { createPost, editPost } = useAsyncActions();
   const navigate = useNavigate();
-  const { postsTableData } = useTypedSelector((state) => state.admin);
+  const { postsTableData } = useTypedSelector((state) => state.posts);
   const { id } = useParams();
 
   const findedPostData = postsTableData.find(

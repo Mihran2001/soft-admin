@@ -1,7 +1,9 @@
 import { AuthActionCreators } from "./auth/action-creators";
-import { AdminActionCreators } from "./posts/action-creators";
+import { NewsActionCreators } from "./news/action-creators";
+import { PostsActionCreators } from "./posts/action-creators";
 
 export const allActionCreators = {
   ...AuthActionCreators,
-  ...AdminActionCreators,
+  ...PostsActionCreators,
+  ...NewsActionCreators,
 };

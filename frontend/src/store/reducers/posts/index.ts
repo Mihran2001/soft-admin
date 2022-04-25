@@ -9,7 +9,7 @@ const initialState: IPostsState = {
   postsTableData: [] as IPostTableData[],
 };
 
-export default function adminReducer(
+export default function postsReducer(
   state = initialState,
   action: PostsAction
 ) {

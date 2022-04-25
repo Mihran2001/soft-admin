@@ -7,7 +7,7 @@ import {
   IDeletePost,
 } from "./types";
 
-export const AdminActionCreators = {
+export const PostsActionCreators = {
   setPostsTableData: (
     postsTableData: IPostTableData[]
   ): SetTableDataAction => ({

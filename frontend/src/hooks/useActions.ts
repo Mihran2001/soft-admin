@@ -5,8 +5,10 @@ import { allActionCreators } from "../store/reducers/action-creators";
 import { AuthActionCreators } from "../store/reducers/auth/action-creators";
 
 import { ThunkDispatch } from "redux-thunk";
-import { AdminActionCreators } from "store/reducers/posts/action-creators";
+import { PostsActionCreators } from "store/reducers/posts/action-creators";
 import { IPostTableData } from "store/reducers/posts/types";
+import { INewsTableData } from "store/reducers/news/types";
+import { NewsActionCreators } from "store/reducers/news/action-creators";
 
 export const useActions = () => {
   const dispatch = useDispatch();
@@ -25,34 +27,41 @@ export const useAsyncActions = () => {
     [dispatch]
   );
 
-  const setTabaleData = useCallback(
+  const setPostsTabaleData = useCallback(
     (data: IPostTableData[]) =>
-      dispatch(AdminActionCreators.setPostsTableData(data)),
+      dispatch(PostsActionCreators.setPostsTableData(data)),
     [dispatch]
   );
 
   const createPost = useCallback(
     (cratePostData: IPostTableData) =>
-      dispatch(AdminActionCreators.createPost(cratePostData)),
+      dispatch(PostsActionCreators.createPost(cratePostData)),
     [dispatch]
   );
 
   const editPost = useCallback(
     (editPostData: IPostTableData) =>
-      dispatch(AdminActionCreators.editPost(editPostData)),
+      dispatch(PostsActionCreators.editPost(editPostData)),
     [dispatch]
   );
 
   const deletePost = useCallback(
-    (id: string) => dispatch(AdminActionCreators.deletePost(id)),
+    (id: string) => dispatch(PostsActionCreators.deletePost(id)),
     [dispatch]
   );
+
+  // const setNewsTabaleData = useCallback(
+  //   (data: INewsTableData[]) =>
+  //     dispatch(NewsActionCreators.setNewsTabaleData(data)),
+  //   [dispatch]
+  // );
 
   return {
     login,
     createPost,
     editPost,
     deletePost,
-    setTabaleData,
+    setPostsTabaleData,
+    // setNewsTabaleData,
   };
 };

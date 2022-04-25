@@ -1,7 +1,9 @@
 import auth from "./auth";
-import admin from "./posts";
+import posts from "./posts";
+import news from "./news";
 
 export default {
   auth,
-  admin,
+  posts,
+  news,
 };
