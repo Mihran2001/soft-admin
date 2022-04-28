@@ -2,9 +2,15 @@ import React, { FC, useEffect } from "react";
 import Table from "./List/index";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { useAsyncActions } from "hooks/useActions";
+import { setPostsTableDataApi } from "api/instance";
 
 const Posts: FC = () => {
-  // useEffect(() => {}, []);
+  const { setPostsTabaleData } = useAsyncActions();
+
+  useEffect(() => {
+    setPostsTableDataApi(setPostsTabaleData);
+  }, []);
   return (
     <div
       className="site-layout-background"

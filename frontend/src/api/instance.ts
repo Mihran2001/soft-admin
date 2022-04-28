@@ -1,4 +1,5 @@
 import axios from "axios";
+import { INewsTableData } from "store/reducers/news/types";
 import { IPostTableData } from "store/reducers/posts/types";
 
 export const instance = axios.create({
@@ -38,10 +39,31 @@ export const deletePostApi = async (id: string, deletePostDispatch: any) => {
   }
 };
 
-export const setPostsTableDataApi = async (setPostsTabledataDispatch: any) => {
+export const setPostsTableDataApi = async (postsTabledataDispatch: any) => {
   try {
     const { data } = await instance.get(`admin/posts`);
-    setPostsTabledataDispatch(data);
+    postsTabledataDispatch(data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const setNewsTableData = async (newsTabledataDispatch: any) => {
+  try {
+    const { data } = await instance.get(`admin/news`);
+    newsTabledataDispatch(data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const createNewsApi = async (
+  newsData: INewsTableData,
+  createNewsDispatch: any
+) => {
+  try {
+    const { data } = await instance.post("admin/news", newsData);
+    createNewsDispatch(data);
   } catch (e) {
     console.log(e);
   }

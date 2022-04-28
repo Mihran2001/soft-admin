@@ -50,11 +50,28 @@ export const useAsyncActions = () => {
     [dispatch]
   );
 
-  // const setNewsTabaleData = useCallback(
-  //   (data: INewsTableData[]) =>
-  //     dispatch(NewsActionCreators.setNewsTabaleData(data)),
-  //   [dispatch]
-  // );
+  const setNewsTabaleData = useCallback(
+    (data: INewsTableData[]) =>
+      dispatch(NewsActionCreators.setNewsTabaleData(data)),
+    [dispatch]
+  );
+
+  const createNews = useCallback(
+    (crateNewsData: IPostTableData) =>
+      dispatch(NewsActionCreators.createNews(crateNewsData)),
+    [dispatch]
+  );
+
+  const editNews = useCallback(
+    (editNewsData: IPostTableData) =>
+      dispatch(NewsActionCreators.editNews(editNewsData)),
+    [dispatch]
+  );
+
+  const deleteNews = useCallback(
+    (id: string) => dispatch(NewsActionCreators.deleteNews(id)),
+    [dispatch]
+  );
 
   return {
     login,
@@ -62,6 +79,9 @@ export const useAsyncActions = () => {
     editPost,
     deletePost,
     setPostsTabaleData,
-    // setNewsTabaleData,
+    setNewsTabaleData,
+    createNews,
+    editNews,
+    deleteNews,
   };
 };
