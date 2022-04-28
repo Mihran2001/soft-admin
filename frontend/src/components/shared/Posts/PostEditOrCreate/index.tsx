@@ -17,11 +17,15 @@ const PostEditOrCreate: FC = () => {
   );
 
   const onSubmitCreate = (values: any) => {
-    if (!!id) {
-      createPostApi(values, createPost);
+    if (id !== "add") {
+      console.log("!!id", !!id);
+
+      editPostApi({ ...values, id }, editPost);
       navigate("../posts", { replace: true });
     } else {
-      editPostApi({ ...values, id }, editPost);
+      console.log("!!id", !!id);
+
+      createPostApi(values, createPost);
       navigate("../posts", { replace: true });
     }
   };

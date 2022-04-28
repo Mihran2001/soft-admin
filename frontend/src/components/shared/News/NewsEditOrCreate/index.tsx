@@ -3,11 +3,11 @@ import EditOrCreate from "components/shared/EditOrCreate";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { useAsyncActions } from "hooks/useActions";
 import { useParams } from "react-router-dom";
-import { createPostApi, editPostApi } from "api/instance";
+import { createNewsApi, editNewsApi } from "api/instance";
 import { useNavigate } from "react-router-dom";
 
 const NewsEditOrCreate: FC = () => {
-  const { createPost, editPost } = useAsyncActions();
+  const { createNews, editNews } = useAsyncActions();
   const navigate = useNavigate();
   const { newsTableData } = useTypedSelector((state) => state.news);
   const { id } = useParams();
@@ -15,11 +15,11 @@ const NewsEditOrCreate: FC = () => {
   const findedNewsData = newsTableData.find((item) => (item as any)._id === id);
 
   const onSubmitCreate = (values: any) => {
-    if (!!id) {
-      createPostApi(values, createPost);
+    if (id !== "add") {
+      editNewsApi({ ...values, id }, editNews);
       navigate("../news", { replace: true });
     } else {
-      editPostApi({ ...values, id }, editPost);
+      createNewsApi(values, createNews);
       navigate("../news", { replace: true });
     }
   };

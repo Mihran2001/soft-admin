@@ -6,7 +6,7 @@ import GuestRoute from "../../GuestRoute";
 import AdminPanel from "../../pages/AdminPanel";
 import Posts from "../shared/Posts";
 import News from "../shared/News";
-import Articles from "../shared/Articles";
+import Articles from "../shared/Jobs";
 import EditOrCreate from "../shared/EditOrCreate";
 import PostEditOrCreate from "components/shared/Posts/PostEditOrCreate";
 import NewsEditOrCreate from "components/shared/News/NewsEditOrCreate";
@@ -27,7 +27,7 @@ const AppRouter: React.FC<{}> = () => {
         <Route path="news" element={<News />} />
         <Route path="news/:id" element={<NewsEditOrCreate />} />
         {/* <Route path="news/add" element={<EditOrCreate />} /> */}
-        <Route path="articles" element={<Articles />} />
+        <Route path="jobs" element={<Articles />} />
       </Route>
       <Route
         path="/auth"

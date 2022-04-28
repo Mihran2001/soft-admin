@@ -1,10 +1,8 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect } from "react";
 import {
   PostEditWrapper,
   SInput,
-  STextArea,
   SButton,
-  SLabel,
   SForm,
   SubmitInputBox,
 } from "./styles";
@@ -15,7 +13,6 @@ import TextEditor, {
 } from "../../TextEditor";
 import { formItems } from "constants/postFormItems";
 import { postInitialData } from "constants/postFormItems";
-import { IPostTableData } from "store/reducers/posts/types";
 
 interface IEditOrCreate {
   isEdit?: {};

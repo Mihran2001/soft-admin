@@ -19,7 +19,7 @@ const Posts: FC = () => {
       <Button style={{ marginBottom: "20px" }}>
         <Link to="/posts/add"> Add Post </Link>
       </Button>
-      <Table />
+      <Table url="posts" />
     </div>
   );
 };

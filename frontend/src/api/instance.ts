@@ -12,6 +12,8 @@ export const createPostApi = async (
 ) => {
   try {
     const { data } = await instance.post("admin/post", postData);
+    console.log("somethig goen wrong");
+
     createPostDispatch(data);
   } catch (e) {
     console.log(e);
@@ -64,6 +66,27 @@ export const createNewsApi = async (
   try {
     const { data } = await instance.post("admin/news", newsData);
     createNewsDispatch(data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editNewsApi = async (
+  newsData: INewsTableData,
+  editNewsDispatch: any
+) => {
+  try {
+    const { data } = await instance.put(`admin/news/${newsData.id}`, newsData);
+    editNewsDispatch(data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteNewsApi = async (id: string, deleteNewsDispatch: any) => {
+  try {
+    const { data } = await instance.delete(`admin/news/${id}`);
+    deleteNewsDispatch((data as any)._id);
   } catch (e) {
     console.log(e);
   }

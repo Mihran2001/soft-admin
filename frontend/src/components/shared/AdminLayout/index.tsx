@@ -1,10 +1,8 @@
-import React, { Children, FC, useEffect } from "react";
-import { useTypedSelector } from "hooks/useTypedSelector";
+import React, { FC } from "react";
 import { Layout, Menu, Button } from "antd";
 import { SLayout, SHeader, SContent, SFooter, SSider } from "./styles";
 import { Link } from "react-router-dom";
 import { useActions, useAsyncActions } from "hooks/useActions";
-import { setPostsTableDataApi } from "api/instance";
 
 const AdminLayout: FC = ({ children }) => {
   const { logout } = useActions();
@@ -32,7 +30,7 @@ const AdminLayout: FC = ({ children }) => {
             <Link to={"/posts"}> Posts </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to={"/articles"}> Articles</Link>
+            <Link to={"/jobs"}> Jobs</Link>
           </Menu.Item>
           <Menu.Item key="3">
             <Link to={"/news"}> News</Link>

@@ -19,7 +19,7 @@ const News: FC = () => {
       <Button style={{ marginBottom: "20px" }}>
         <Link to="/news/add"> Add News </Link>
       </Button>
-      <Table />
+      <Table url={"news"} />
     </div>
   );
 };

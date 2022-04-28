@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Table, Tag, Space, Button } from "antd";
-import { deletePostApi } from "api/instance";
 import { convertHTMLToString } from "components/TextEditor";
 
 // export const postsData = (data: any) => [
@@ -30,7 +29,7 @@ import { convertHTMLToString } from "components/TextEditor";
 //   },
 // ];
 
-export const columns = (deletePost: any) => [
+export const columns = (deletePost: any, url: string, deleteApi: any) => [
   {
     title: "Title",
     dataIndex: "title",
@@ -72,12 +71,8 @@ export const columns = (deletePost: any) => [
     dataIndex: "_id",
     render: (id: string, record: any) => (
       <Space size="middle">
-        <Link to={`/posts/${id}`}>Edit</Link>
-        <Button
-          type="link"
-          danger
-          onClick={() => deletePostApi(id, deletePost)}
-        >
+        <Link to={`/${url}/${id}`}>Edit</Link>
+        <Button type="link" danger onClick={() => deleteApi(id, deletePost)}>
           Delete
         </Button>
       </Space>
