@@ -11,7 +11,7 @@ router.get('/user/:id', adminAuth, userCtr.getUser);
 /* Posts */
 
 // get posts
-router.get('/posts', adminAuth, postCtr.getPosts);
+router.get('/posts', postCtr.getPosts);
 
 // get post
 router.get('/post/:id', adminAuth, postCtr.getPost);
@@ -29,7 +29,7 @@ router.put('/post/:id', adminAuth, postCtr.updatePost);
 /* News */
 
 // get allNews
-router.get('/news', adminAuth, newsCtr.getAllNews);
+router.get('/news', newsCtr.getAllNews);
 
 // get news
 router.get('/news/:id', adminAuth, newsCtr.getNews);
