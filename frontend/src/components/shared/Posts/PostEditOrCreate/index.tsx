@@ -18,13 +18,9 @@ const PostEditOrCreate: FC = () => {
 
   const onSubmitCreate = (values: any) => {
     if (id !== "add") {
-      console.log("!!id", !!id);
-
       editPostApi({ ...values, id }, editPost);
       navigate("../posts", { replace: true });
     } else {
-      console.log("!!id", !!id);
-
       createPostApi(values, createPost);
       navigate("../posts", { replace: true });
     }

@@ -12,8 +12,6 @@ export const createPostApi = async (
 ) => {
   try {
     const { data } = await instance.post("admin/post", postData);
-    console.log("somethig goen wrong");
-
     createPostDispatch(data);
   } catch (e) {
     console.log(e);
@@ -87,6 +85,14 @@ export const deleteNewsApi = async (id: string, deleteNewsDispatch: any) => {
   try {
     const { data } = await instance.delete(`admin/news/${id}`);
     deleteNewsDispatch((data as any)._id);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const uploadImg = async (name: string, id: any, type: any) => {
+  try {
+    await instance.post("image", { name, id, type });
   } catch (e) {
     console.log(e);
   }

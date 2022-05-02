@@ -19,6 +19,7 @@ const NewsEditOrCreate: FC = () => {
       editNewsApi({ ...values, id }, editNews);
       navigate("../news", { replace: true });
     } else {
+      console.log("id", id);
       createNewsApi(values, createNews);
       navigate("../news", { replace: true });
     }
