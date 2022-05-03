@@ -28,7 +28,7 @@ const UploadImg: FC<UploadProps | any> = (props) => {
       customRequest={customUpload}
       maxCount={1}
       {...props}
-      onChange={handleChange}
+      // onChange={handleChange}
     >
       <Button icon={<UploadOutlined />}>Click to Upload</Button>
     </Upload>

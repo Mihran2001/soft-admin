@@ -13,8 +13,6 @@ import TextEditor, {
 } from "../../TextEditor";
 import { formItems } from "constants/postFormItems";
 import { postInitialData } from "constants/postFormItems";
-import axios from "axios";
-import { uploadImg } from "api/instance";
 
 interface IEditOrCreate {
   isEdit?: {};
@@ -42,10 +40,12 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
       });
     }
   }, [form, postData]);
+
   return (
     <PostEditWrapper>
       <SForm
         onFinish={onFinish}
+        id="editForm"
         layout={"vertical"}
         initialValues={postInitialData}
         form={form}
@@ -53,9 +53,10 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
         <SForm.Item name={"content"} label={"Content"}>
           <TextEditor />
         </SForm.Item>
+
         {formItems.map((item) => {
           return (
-            <SForm.Item name={item.name} label={item.label}>
+            <SForm.Item name={item.name} label={item.label} key={item.name}>
               <SInput placeholder={item.label} />
             </SForm.Item>
           );
@@ -74,9 +75,9 @@ const EditOrCreate: FC<IEditOrCreate> = ({ isEdit, onSubmit, postData }) => {
         </SForm.Item>
 
         <SubmitInputBox>
-          <SButton htmlType="submit" disabled={disabledButton}>
-            Submit
-          </SButton>
+          {/* <SButton htmlType="submit" onClick={() => form.submit()}> */}
+          {/* <SButton htmlType="submit" disabled={disabledButton}> */}
+          <SButton htmlType="submit">Submit</SButton>
         </SubmitInputBox>
       </SForm>
     </PostEditWrapper>

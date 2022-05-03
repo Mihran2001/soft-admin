@@ -36,8 +36,6 @@ const TextEditor: React.FC<IProps> = ({
   value = getInitialState(),
   onChange = () => {},
 }) => {
-  // console.log(value.getCurrentInlineStyle().has("BOLD"));
-
   const handleKeyCommand = (command: any) => {
     const newState = RichUtils.handleKeyCommand(value, command);
     if (newState) {
@@ -47,28 +45,6 @@ const TextEditor: React.FC<IProps> = ({
     return "not-handled";
   };
 
-  // const onUnderlineClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-  //   e.preventDefault();
-  //   onChange(RichUtils.toggleInlineStyle(value, "UNDERLINE"));
-  // };
-
-  // const onBoldClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-  //   e.preventDefault();
-  //   onChange(RichUtils.toggleInlineStyle(value, "BOLD"));
-  // };
-
-  // const onItalicClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-  //   e.preventDefault();
-  //   onChange(RichUtils.toggleInlineStyle(value, "ITALIC"));
-  // };
-
-  // const onStrikeThroughClick: React.MouseEventHandler<HTMLButtonElement> = (
-  //   e
-  // ) => {
-  //   e.preventDefault();
-  //   onChange(RichUtils.toggleInlineStyle(value, "STRIKETHROUGH"));
-  // };
-
   const toggleInlineStyle: any = (inlineStyle: any) => {
     const newState = RichUtils.toggleInlineStyle(value, inlineStyle);
     onChange(newState);
@@ -76,41 +52,6 @@ const TextEditor: React.FC<IProps> = ({
 
   return (
     <Root>
-      {/* <SButton
-        // className="inline styleButton editorButtons "
-        // className={`inline styleButton editorButtons ${activeStyle}`}
-        id="underline"
-        onMouseDown={onUnderlineClick}
-        type="button"
-      >
-        U
-      </SButton>
-
-      <SButton
-        // className="inline styleButton editor-buttons"
-        id="bold"
-        onMouseDown={onBoldClick}
-        type="button"
-      >
-        B
-      </SButton>
-
-      <SButton
-        // className="inline styleButton editor-buttons"
-        id="italic"
-        onMouseDown={onItalicClick}
-        type="button"
-      >
-        I
-      </SButton>
-      <SButton
-        className="strikethrough"
-        onMouseDown={onStrikeThroughClick}
-        type="button"
-      >
-        abc
-      </SButton> */}
-
       <InlineStyleControls
         currentInlineStyle={value.getCurrentInlineStyle()}
         onToggle={toggleInlineStyle}

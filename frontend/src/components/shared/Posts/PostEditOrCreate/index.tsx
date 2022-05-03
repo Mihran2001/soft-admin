@@ -16,7 +16,7 @@ const PostEditOrCreate: FC = () => {
     (item) => (item as any)._id === id
   );
 
-  const onSubmitCreate = (values: any) => {
+  const onSubmit = (values: any) => {
     if (id !== "add") {
       editPostApi({ ...values, id }, editPost);
       navigate("../posts", { replace: true });
@@ -27,11 +27,7 @@ const PostEditOrCreate: FC = () => {
   };
 
   return (
-    <EditOrCreate
-      isEdit={!!id}
-      postData={findedPostData}
-      onSubmit={onSubmitCreate}
-    />
+    <EditOrCreate isEdit={!!id} postData={findedPostData} onSubmit={onSubmit} />
   );
 };
 

@@ -14,7 +14,7 @@ const NewsEditOrCreate: FC = () => {
 
   const findedNewsData = newsTableData.find((item) => (item as any)._id === id);
 
-  const onSubmitCreate = (values: any) => {
+  const onSubmit = (values: any) => {
     if (id !== "add") {
       editNewsApi({ ...values, id }, editNews);
       navigate("../news", { replace: true });
@@ -26,11 +26,7 @@ const NewsEditOrCreate: FC = () => {
   };
 
   return (
-    <EditOrCreate
-      isEdit={!!id}
-      postData={findedNewsData}
-      onSubmit={onSubmitCreate}
-    />
+    <EditOrCreate isEdit={!!id} postData={findedNewsData} onSubmit={onSubmit} />
   );
 };
 

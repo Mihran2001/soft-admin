@@ -1,11 +1,10 @@
-import SkeletonButton from "antd/lib/skeleton/Button";
 import {
   RcFile as OriRcFile,
   UploadRequestOption as RcCustomRequestOptions,
   UploadProps as RcUploadProps,
 } from "rc-upload/lib/interface";
 
-const convertBase64 = (file: any): Promise<any> => {
+export const convertBase64 = (file: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
@@ -18,7 +17,7 @@ const convertBase64 = (file: any): Promise<any> => {
   });
 };
 
-function getError(option: any, xhr: XMLHttpRequest) {
+export function getError(option: any, xhr: XMLHttpRequest) {
   const msg = `cannot ${option.method} ${option.action} ${xhr.status}'`;
   const err = new Error(msg) as any;
   err.status = xhr.status;
@@ -27,7 +26,7 @@ function getError(option: any, xhr: XMLHttpRequest) {
   return err;
 }
 
-function getBody(xhr: XMLHttpRequest) {
+export function getBody(xhr: XMLHttpRequest) {
   const text = xhr.responseText || xhr.response;
   if (!text) {
     return text;
@@ -41,7 +40,9 @@ function getBody(xhr: XMLHttpRequest) {
 }
 
 export async function customUpload(option: RcCustomRequestOptions<any>) {
-  console.log(option);
+  console.log("option", option);
+
+  console.log(option.file);
 
   // eslint-disable-next-line no-undef
   const xhr = new XMLHttpRequest();
@@ -95,7 +96,6 @@ export async function customUpload(option: RcCustomRequestOptions<any>) {
     }
 
     if (option.onSuccess) {
-      // SkeletonButton();
       return option.onSuccess(getBody(xhr), xhr);
     }
   };

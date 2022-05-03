@@ -8,7 +8,7 @@ export interface IPostTableData {
   titleTag: string;
   metaDescription: string;
   url: string;
-  image?: string;
+  image?: any;
 }
 
 export enum PostsActionEnum {
